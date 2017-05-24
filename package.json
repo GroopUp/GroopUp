@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/GroopUp/GroopUp/issues"
   },
-  "homepage": "https://github.com/GroopUp/GroopUp#readme"
+  "homepage": "https://github.com/GroopUp/GroopUp#readme",
+  "dependencies": {
+    "sequelize": "^3.30.4"
+  }
 }
