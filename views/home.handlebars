@@ -4,19 +4,22 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class ="col-lg-12 events">
-<!-- handlebars generates a list of all events in DB with the name, location, date/time and a button to view the event's page  -->
+    <div class="col-lg-12 events">
+      <!-- handlebars generates a list of all events in DB with the name, location, date/time and a button to view the event's page  -->
       <ul style="list-style:none">
         {{#each event}}
-            <center><li>
-              {{name}}
-              {{info}}
+          <center>
+            <li>
+              {{name}} {{info}}
               <form action="/{{this.id}}?_method=GET" method="GET">
                 <!-- <input type="hidden" name="devoured" value="false"> -->
                 <button type="view">view event</button>
               </form>
-            </center></li>
+          </center>
+          </li>
           {{/if}}
         {{/each}}
       </ul>
     </div>
+  </div>
+</div>
