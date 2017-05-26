@@ -70,8 +70,10 @@
 				<ul style="list-style:none">
 					{{#each event}}
 							<center><li>
-								{{name}}
-								{{info}}
+								{{title}}
+								{{location}}
+								{{date}}
+								{{picture}}
 								<form action="/{{this.id}}?_method=GET" method="GET">
 									<!-- <input type="hidden" name="devoured" value="false"> -->
 									<button type="view">view event</button>
