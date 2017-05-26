@@ -8,6 +8,7 @@ var flash = require('connect-flash');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var methodOverride = require("method-override");
+var bcryptjs = require("bcryptjs");
 var db = require("./models");
 var PORT = process.env.PORT || 3000;
 var app = express();

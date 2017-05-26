@@ -29,7 +29,7 @@ module.exports = function(sequelize, Datatypes){
 				len:[1]
 			}
 		}, // end of email
-		attendencelimit: {
+		attendence_cap: {
 			type: Datatypes.INTEGER,
 			allowNull: false,
 			validate: {
