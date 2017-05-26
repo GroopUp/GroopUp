@@ -22,12 +22,25 @@ module.exports = function(sequelize, Datatypes){
 				len: [10]
 			}
 		}, // end of phonenumber
-
+		email: {
+			type: Datatypes.STRING,
+			allowNull: false,
+			validate: {
+				isEmail: true
+			}
+		},
+		picture: {
+			type: Datatypes.STRING,
+			allowNull: false,
+			validate: {
+				isUrl: true
+			}
+		} // end of picture
 	},
 	    {
       classMethods: {
         associate: function(models) {
-          Business.belongsTo(models.event, {
+          Business.hasMany(models.Event, {
             foreignKey: {
               allowNull: false
             }
