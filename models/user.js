@@ -1,63 +1,62 @@
-module.exports = function(sequelize, Datatypes){
-	var User = sequelize.define("User", {
+module.exports = function(sequelize, Datatypes) {
+    var User = sequelize.define("User", {
 
-		name: {
-			type: Datatypes.STRING,
-			allowNull: false,
-			validate: {
-				len:[1]
-			} // end of validate
-		}, // end of name
-		password: {
-			type: Datatypes.STRING,
-			allowNull: false,
-			validate: {
-				len:[1]
-			}
-		}, // end of password
-		email: {
-			type: Datatypes.STRING,
-			allowNull: false,
-			validate: {
-				isEmail: true
-			}
-		}, // end of email
-		age: {
-			type: Datatypes.INTEGER,
-			allowNull: false,
-			validate: {
-				isInt: true
-			}
-		}, // end of age
-		sex: {
-			type: Datatypes.BOOLEAN,
-			allowNull: false,
-			validate: {
-				isIn: ['m', 'f', 'M', 'F'],
-				isAlphanumeric: true
-			}
-		}, // end of sex
-		picture: {
-			type: Datatypes.STRING,
-			allowNull: false,
-			validate: {
-				isUrl: true
-			}
-		} // end of picture
-	},
-	    {
-      // We're saying that we want our Author to have Posts
-      classMethods: {
-        associate: function(models) {
-          // An Author (foreignKey) is required or a Post can't be made
-          User.hasMany(models.Signup, {
-            foreignKey: {
-              allowNull: false
+        name: {
+            type: Datatypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            } // end of validate
+        }, // end of name
+        password: {
+            type: Datatypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
             }
-          });
+        }, // end of password
+        email: {
+            type: Datatypes.STRING,
+            allowNull: false,
+            validate: {
+                isEmail: true
+            }
+        }, // end of email
+        age: {
+            type: Datatypes.INTEGER,
+            allowNull: false,
+            validate: {
+                isInt: true
+            }
+        }, // end of age
+        sex: {
+            type: Datatypes.BOOLEAN,
+            allowNull: false,
+            validate: {
+                isIn: ['m', 'f', 'M', 'F'],
+                isAlphanumeric: true
+            }
+        }, // end of sex
+        picture: {
+            type: Datatypes.STRING,
+            allowNull: false,
+            validate: {
+                isUrl: true
+            }
+        } // end of picture
+    }, {
+        // We're saying that we want our Author to have Posts
+        timestamps: false,
+        classMethods: {
+            associate: function(models) {
+                // An Author (foreignKey) is required or a Post can't be made
+                User.hasMany(models.Signup, {
+                    foreignKey: {
+                        allowNull: false
+                    }
+                });
+            }
         }
-      }
-    }
-	);
-	return User;
+    });
+    return User;
 }

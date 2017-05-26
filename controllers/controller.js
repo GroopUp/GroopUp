@@ -39,9 +39,9 @@ router.post('/new-user', function(req, res) {
 });
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-router.get('/user-login', function(req, res) {
-    db.
-});
+// router.get('/user-login', function(req, res) {
+//     db.
+// });
 
 router.post('/new-business', function(req, res) {
     db.Business.create({
@@ -56,14 +56,14 @@ router.post('/new-business', function(req, res) {
 });
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-router.get('/business-login', function(req, res) {
-    db.
-});
+// router.get('/business-login', function(req, res) {
+//     db.
+// });
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-router.post('/quiz', function(req, res) {
-    db.
-});
+// // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// router.post('/quiz', function(req, res) {
+//     db.
+// });
 
 router.post('/new-event', function(req, res) {
     db.Event.create({
@@ -91,9 +91,9 @@ router.get('/user-account/:id', function(req, res) {
 });
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-router.update('/user-account', function(req, res) {
-    db.
-});
+// router.update('/user-account', function(req, res) {
+//     db.
+// });
 
 router.get('/business-account/:id', function(req, res) {
     db.Business.findOne({
@@ -107,8 +107,8 @@ router.get('/business-account/:id', function(req, res) {
 });
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-router.update('/business-account', function(req, res) {
-    db.
-});
+// router.update('/business-account', function(req, res) {
+//     db.
+// });
 
 module.exports = router;
