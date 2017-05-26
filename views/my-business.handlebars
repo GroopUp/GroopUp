@@ -32,20 +32,5 @@
           <button type="submit">Update Picture</button><br>
           </div>
         </form>
-        <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
-        <div class="form-group">
-          <label for="picture">Sex: {{this.sex}}<br></label>
-        <input type="radio" name="sex" value="0"> male<br>
-        <input type="radio" name="sex" value="1"> femmale<br>
-        <input type="radio" name="sex" value="">other<br>
-        <button type="submit">Update Sex</button>
-        </div>
-        <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
-        <div class="form-group">
-          <label for="picture">Photo: {{this.age}}</label>
-          <input type="text" id="age" name="age" value="{{this.age}}">
-          <button type="submit">Update Age</button>
-          </div>
-        </form>
       </div>
     </div>
