@@ -27,5 +27,5 @@ module.exports = function(sequelize, Datatypes){
       }
     }
 	);
-	return Event;
+	return Signup;
 }

@@ -33,7 +33,7 @@ module.exports = function(sequelize, Datatypes){
 			type: Datatypes.BOOLEAN,
 			allowNull: false,
 			validate: {
-				isIn: ['m', 'f', 'M', 'F']
+				isIn: ['m', 'f', 'M', 'F'],
 				isAlphanumeric: true
 			}
 		}, // end of sex

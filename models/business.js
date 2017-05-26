@@ -36,5 +36,5 @@ module.exports = function(sequelize, Datatypes){
       }
     }
 	);
-	return Buisness;
+	return Business;
 }
