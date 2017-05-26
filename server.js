@@ -1,6 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
+var bcryptjs = require("bcryptjs");
+var passport = require("passport");
 
 var PORT = process.env.PORT || 3000;
 var exphbs = require("express-handlebars");
