@@ -44,7 +44,7 @@ module.exports = function(sequelize, Datatypes) {
             }
         } // end of picture
     }, {
-        timestamps: false,
+        // timestamps: false,
         classMethods: {
             associate: function(models) {
                 Event.belongsTo(models.Business, {

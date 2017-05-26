@@ -14,7 +14,7 @@ module.exports = function(sequelize, Datatypes) {
                 });
             }
         },
-        timestamps: false,
+        // timestamps: false,
         classMethods: {
             associate: function(models) {
 

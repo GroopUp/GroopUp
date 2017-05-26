@@ -25,7 +25,12 @@ router.get('/view-event/:id', function(req, res) {
     });
 });
 
+router.get("/new-user", function(req, res){
+    res.render("new-user");
+})
+
 router.post('/new-user', function(req, res) {
+    console.log(req.body);
     db.User.create({
     	name: req.body.name,
     	password: req.body.password,

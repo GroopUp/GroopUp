@@ -33,7 +33,7 @@ module.exports = function(sequelize, Datatypes) {
             type: Datatypes.BOOLEAN,
             allowNull: false,
             validate: {
-                isIn: ['m', 'f', 'M', 'F'],
+                isIn: ['0', '1', ''],
                 isAlphanumeric: true
             }
         }, // end of sex
@@ -46,7 +46,7 @@ module.exports = function(sequelize, Datatypes) {
         } // end of picture
     }, {
         // We're saying that we want our Author to have Posts
-        timestamps: false,
+        // timestamps: false,
         classMethods: {
             associate: function(models) {
                 // An Author (foreignKey) is required or a Post can't be made
