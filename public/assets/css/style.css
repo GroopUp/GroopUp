@@ -1,0 +1,45 @@
+body {
+  /*background: linear-gradient(to bottom, #41f4f1, #42a1f4);*/
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+.container {
+  margin: auto;
+  width: 800px;
+}
+.jumbotron {
+  background: linear-gradient(to bottom, #41f4f1, #42a1f4);
+  /*background-color: rgba(25, 14, 233, 0);*/
+  color: rgb(22, 184, 34);
+}
+h1 {
+    font-size: 60px;
+    font-family: 'Quicksand', sans-serif;
+
+}
+
+.search {
+  text-align: center;
+  font-size: 24px;
+  font-family: 'Quicksand', sans-serif;
+}
+button {
+  background-color: rgba(25, 14, 233, 0);
+  border-color: rgba(25, 14, 233, 0);
+}
+.buttons {
+  margin-right: 0;
+}
+.placeholder {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.new-biz, .new-event, .new-user-info {
+  height: 700px;
+}
+
+.quiz {
+  height: 900px;
+}
