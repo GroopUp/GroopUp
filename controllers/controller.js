@@ -29,6 +29,10 @@ router.get("/new-user", function(req, res){
     res.render("new-user");
 })
 
+router.get("/new-business", function(req, res){
+    res.render("new-business");
+})
+
 router.post('/new-user', function(req, res) {
     console.log(req.body);
     db.User.create({
@@ -52,10 +56,9 @@ router.post('/new-business', function(req, res) {
     db.Business.create({
     	name: req.body.name,
     	password: req.body.password,
-    	phone: req.body.phone,
+    	phonenumber: req.body.phonenumber,
     	email: req.body.email,
-    	picture: req.body.picture
-    }).then(function(data) {
+        picture: req.body.picture}).then(function(data) {
     	res.json(data);
     });
 });
