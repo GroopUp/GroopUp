@@ -31,10 +31,10 @@ module.exports = function(sequelize, Datatypes) {
         },
         picture: {
             type: Datatypes.STRING,
-            allowNull: false,
-            validate: {
-                isUrl: true
-            }
+            allowNull: false
+            // validate: {
+            //     isUrl: true
+            // }
         } // end of picture
     }, {
         // timestamps: false,
