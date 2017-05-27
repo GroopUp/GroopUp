@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "ninja",
-    "database": "database_development",
+    "database": "GROOPUPTESTING",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

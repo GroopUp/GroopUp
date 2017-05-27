@@ -1,83 +1,82 @@
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
-			login
-		</button>
-		<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">login</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      <div class="modal-body">
-						<form class="create-update-form" action="/" method="GET">
-						  <center>
-						    <div class="form-group">
-						    <label for="user-email">email:</label>
-						    <input type="text" id="email" name="user-email">
-						  </div>
-						    <center>
-						      <div class="form-group">
-						      <label for="user-password">password:</label>
-						      <input type="text" id="pw" name="user-password"><br>
-						    </div>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary">login</button>
-						  </form>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal">
-			new user
-		</button>
-		<div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">new user</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      <div class="modal-body">
-						select account type
-		      </div>
-		      <div class="modal-footer">
-						<form class="create-update-form" action="/new-user" method="GET">
-		        <button type="button" class="btn btn-primary">user</button>
-					</form>
-					<form class="create-update-form" action="/new-business" method="GET">
-					<button type="button" class="btn btn-primary">business</button>
-				</form>
-		      </div>
-		    </div>
-		  </div>
-		</div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">login</button>
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                        <form class="create-update-form" action="/" method="GET">
+                          <center>
+                            <div class="form-group">
+                            <label for="user-email">email:</label>
+                            <input type="text" id="email" name="user-email">
+                          </div>
+                            <center>
+                              <div class="form-group">
+                              <label for="user-password">password:</label>
+                              <input type="text" id="pw" name="user-password"><br>
+                            </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary">login</button>
+                          </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal">
+            new user
+        </button>
+        <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">new user</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                        select account type
+              </div>
+              <div class="modal-footer">
+                        <form class="create-update-form" action="/new-user" method="GET">
+                <button type="submit" class="btn btn-primary">user</button>
+                    </form>
+                    <form class="create-update-form" action="/new-business" method="GET">
+                    <button type="submit" class="btn btn-primary">business</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
 
-		<div class="jumbotron">
-	  <h1><center>GroopUp</center></h1>
-	</div>
-	<div class="container">
-	  <div class="row">
-			<div class ="col-lg-12 events">
-			<!-- handlebars generates a list of all events in DB with the name, location, date/time and a button to view the event's page  -->
-				<ul style="list-style:none">
-					{{#each event}}
-							<center><li>
-								{{title}}
-								{{location}}
-								{{date}}
-								{{picture}}
-								<form action="/{{this.id}}?_method=GET" method="GET">
-									<!-- <input type="hidden" name="devoured" value="false"> -->
-									<button type="view">view event</button>
-								</form>
-							</center></li>
-					{{/each}}
-				</ul>
-			</div>
-		</div>
-	</div>
+        <div class="jumbotron">
+      <h1><center>GroopUp</center></h1>
+    </div>
+    <div class="container">
+      <div class="row">
+            <div class ="col-lg-12 events">
+            <!-- handlebars generates a list of all events in DB with the name, location, date/time and a button to view the event's page  -->
+                <ul style="list-style:none">
+                    {{#each event}}
+                            <center><li>
+                                {{title}}
+                                {{location}}
+                                {{date}}
+                                {{picture}}
+                                <form action="/{{this.id}}?_method=GET" method="GET">
+                                    <!-- <input type="hidden" name="devoured" value="false"> -->
+                                    <button type="view">view event</button>
+                                </form>
+                            </center></li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+>>>>>>> master
