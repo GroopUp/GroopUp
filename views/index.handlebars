@@ -44,17 +44,14 @@
 		      </div>
 		      <div class="modal-body">
 						select account type
-						<form class="create-update-form" action="/" method="GET">
-						<div class="radio">
-						  <label><input type="radio" name="account" value="1">user</label>
-						</div>
-						<div class="radio">
-						  <label><input type="radio" name="account" value="0">business</label>
-						</div>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-primary">create account</button>
+						<form class="create-update-form" action="/new-user" method="GET">
+		        <button type="button" class="btn btn-primary">user</button>
 					</form>
+					<form class="create-update-form" action="/new-business" method="GET">
+					<button type="button" class="btn btn-primary">business</button>
+				</form>
 		      </div>
 		    </div>
 		  </div>
@@ -79,7 +76,6 @@
 									<button type="view">view event</button>
 								</form>
 							</center></li>
-						{{/if}}
 					{{/each}}
 				</ul>
 			</div>
