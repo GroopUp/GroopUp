@@ -29,6 +29,12 @@ module.exports = function(sequelize, Datatypes) {
                 isEmail: true
             }
         }, // end of email
+        bio: {
+            type: Datatypes.TEXT,
+            validate: {
+                len: [1]
+            } // end of validate
+        }, // end of bio
         age: {
             type: Datatypes.INTEGER,
             allowNull: false,
