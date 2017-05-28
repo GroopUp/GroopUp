@@ -1,13 +1,20 @@
 module.exports = function(sequelize, Datatypes) {
     var User = sequelize.define("User", {
 
-        name: {
+        firstname: {
             type: Datatypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
             } // end of validate
-        }, // end of name
+        }, // end of firstname
+        lastname: {
+            type: Datatypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            } // end of validate
+        }, // end of lastname
         password: {
             type: Datatypes.STRING,
             allowNull: false,
