@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "ninja",
+    "password": "alison",
     "database": "GROOPUPTESTING",
     "host": "127.0.0.1",
     "dialect": "mysql"

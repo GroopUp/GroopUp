@@ -5,32 +5,86 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12 new-user-info">
-      <form class="create-update-form" action="/new-user" method="POST">
-        <center>
-          <div class="form-group">
-            <label for="user-email">email:</label>
-            <input type="text" id="email" name="email">
-            <center>
-          </div>
-          <div class="form-group">
-            <label for="user-password">password:</label>
-            <input type="text" id="pw" name="password"><br>
-          </div>
-          <div class="form-group">
-            <label for="user-name">full name:</label>
-            <input type="text" id="pw" name="name"><br>
-            <label for="user-age">age:</label>
-            <input type="text" id="age" name="age"><br>
-            <input type="radio" name="sex" value="0" checked> male<br>
-            <input type="radio" name="sex" value="1"> female<br>
-            <input type="radio" name="sex" value="">other<br>
-          </div>
-          <label for="user-bio">bio:</label>
+      <table class="new-account">
+      <form class="create-update-form" action="/survey" metdod="POST">
+        <div class="form-group">
+        <tr>
+            <td>
+              email:
+            </td>
+            <td>
+              <input type="text" id="email" name="email">
+            </td>
+        </tr>
+        <tr>
+            <td>
+              password:
+            </td>
+            <td>
+              <input type="text" id="pw" name="password"><br>
+            </td>
+        </tr>
+        <tr>
+          <td>
+            first name:
+          </td>
+            <td>
+            <input type="text" id="pw" name="firstname"><br>
+          </td>
+        </tr>
+        <tr>
+        <td>
+          last name:
+        </td>
+          <td>
+        <input type="text" id="pw" name="lastname"><br>
+          </td>
+        </tr>
+      <tr>
+        <td>
+          age:
+        </td>
+        <td>
+          <input type="text" id="age" name="age"><br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          sex:
+        </td>
+        <td>
+          <!-- <div class="form-group"> -->
+          <input type="radio" name="sex" value="0" checked> male<br>
+          <input type="radio" name="sex" value="1"> female<br>
+          <input type="radio" name="sex" value="">other<br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          bio:
+        </td>
+        <td>
           <textarea type="text" id="pw" name="bio"></textarea><br/>
-          <label for="user-pic">photo url:</label>
-          <input type="text" id="pic" name="picture"><br>
-          <button type="submit" id="submit">continue</button>
+        </td>
+      </tr>
+      <tr>
+      <td>
+        photo url:
+      </td>
+      <td>
+      <input type="text" id="pic" name="picture"><br>
+      </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <center>
+            <button type="submit" class="btn btn-primary" id="submit">continue</button>
+          </center>
+        </td>
+      </tr>
+          </table>
     </div>
+    </form>
   </div>
-  </form>
+
 </div>
