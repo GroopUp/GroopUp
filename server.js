@@ -6,6 +6,7 @@ var exphbs = require("express-handlebars");
 var expressValidator = require('express-validator');
 var flash = require('connect-flash');
 var passport = require('passport');
+var passportConfig = require("./config/passport");
 var LocalStrategy = require('passport-local').Strategy;
 var methodOverride = require("method-override");
 var bcryptjs = require("bcryptjs");
@@ -13,6 +14,7 @@ var db = require("./models");
 var PORT = process.env.PORT || 3000;
 var app = express();
 
+app.use("/public", express.static(__dirname+"/public"));
 // View Engine
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
