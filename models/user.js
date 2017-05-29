@@ -6,12 +6,12 @@ module.exports = function(sequelize, Datatypes) {
         name: {
             type: Datatypes.STRING,
             allowNull: false,
-            unique: true,
             validate: {
                 len: [1]
             } // end of validate
         }, // end of firstname
-// end of lastname
+
+
         password: {
             type: Datatypes.STRING,
             allowNull: false,
@@ -22,6 +22,7 @@ module.exports = function(sequelize, Datatypes) {
         email: {
             type: Datatypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
                 isEmail: true
             }
@@ -53,7 +54,10 @@ module.exports = function(sequelize, Datatypes) {
             validate: {
                 isUrl: true
             }
-        } // end of picture
+        }, // end of picture
+        uquizresults: {
+            type: Datatypes.STRING
+        }
     }, {
         // We're saying that we want our Author to have Posts
         // timestamps: false,

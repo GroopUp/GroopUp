@@ -42,7 +42,10 @@ module.exports = function(sequelize, Datatypes) {
             validate: {
                 isUrl: true
             }
-        } // end of picture
+        }, // end of picture
+        equizresults: {
+            type: Datatypes.STRING
+        }
     }, {
         // timestamps: false,
         classMethods: {
