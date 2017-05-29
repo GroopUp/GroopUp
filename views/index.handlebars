@@ -19,7 +19,7 @@
                                     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#home" role="tab">User</a></li>
                                     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu1" role="tab">Business</a></li>
                                   </ul>
-                                  
+
                                   <div class="tab-content">
                                     <div id="home" class="tab-pane fade in active" role="tabpanel">
                                       <form class="create-update-form" action="/signin" method="POST">
@@ -31,7 +31,7 @@
                                           <center>
                                             <div class="form-group">
                                             <label for="user-password">password:</label>
-                                            <input type="text" id="pw" name="user-password"><br>
+                                            <input type="password" id="pw" name="user-password"><br>
                                           </div>
 
                                         <button type="submit" class="btn btn-primary">user</button>
@@ -50,7 +50,7 @@
                                                 <label for="user-password">password:</label>
                                                 <input type="text" id="pw" name="password"><br>
                                               </div>
-                                      
+
                                         <button type="submit" class="btn btn-primary">business</button>
                                       </form>
                                     </div>
@@ -62,8 +62,8 @@
                           </div>
 
 
-                          
-                        
+
+
                         </div>
                       </div>
                     </div>
@@ -125,7 +125,7 @@
                                 {{title}}
                                 {{location}}
                                 {{date}}
-                                {{picture}}
+                                <img height="200px" src={{picture}}/>
                                 <form action="/{{this.id}}?_method=GET" method="GET">
                                     <!-- <input type="hidden" name="devoured" value="false"> -->
                                     <button type="view">view event</button>

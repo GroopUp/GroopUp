@@ -4,7 +4,7 @@ var router = express.Router();
 var authController = require('./authcontroller.js');
 var passport = require("passport");
 
-//user authentication 
+//user authentication
 
 
 router.get("/new-user", authController.signup);
@@ -54,6 +54,7 @@ router.get("/new-event", function(req, res) {
         res.redirect("/");
     }
 })
+
 
 router.post('/new-event', function(req, res) {
     if (req.isAuthenticated()) {

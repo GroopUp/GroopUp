@@ -30,10 +30,8 @@
                 <ul style="list-style:none">
                     {{#each event}}
                             <center><li>
-                                {{title}}
-                                {{location}}
-                                {{date}}
-                                {{picture}}
+                                <h3>{{title}}</h3>
+                                <img height="200px" src={{picture}}/>
                                 <form action="/{{this.id}}?_method=GET" method="GET">
                                     <!-- <input type="hidden" name="devoured" value="false"> -->
                                     <button type="view">view event</button>
