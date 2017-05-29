@@ -2,7 +2,11 @@
   "development": {
     "username": "root",
     "password": "ninja",
+<<<<<<< HEAD
     "database": "groopuptesting",
+=======
+    "database": "GROOOOPUP",
+>>>>>>> 645de2c0785f6d7c122c6b3cce26946732cf4949
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
