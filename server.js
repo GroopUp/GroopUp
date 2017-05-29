@@ -7,6 +7,7 @@ var expressValidator = require('express-validator');
 var flash = require('connect-flash');
 var passport = require('passport');
 var passportConfig = require("./config/passport");
+var session = require("express-session");
 var LocalStrategy = require('passport-local').Strategy;
 var methodOverride = require("method-override");
 var bcryptjs = require("bcryptjs");
@@ -26,15 +27,15 @@ app.use(cookieParser());
 
 
 // // Express Session
-// app.use(session({
-//     secret: 'secret',
-//     saveUninitialized: true,
-//     resave: true
-// }));
+app.use(session({
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: true
+}));
 
 // // Passport init
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // // Express Validator
 // app.use(expressValidator({
