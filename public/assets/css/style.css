@@ -15,6 +15,7 @@ body {
   background: linear-gradient(to bottom, #41f4f1, #42a1f4);
   /*background-color: rgba(25, 14, 233, 0);*/
   color: rgb(22, 184, 34);
+  border-radius: 0;
 }
 h1 {
     font-size: 80px;
@@ -32,7 +33,7 @@ button {
   border-color: rgba(25, 14, 233, 0);
 }
 .logins {
-  width: 200px;
+  width: 350px;
   margin-top: -50px;
   float: right;
 }
@@ -40,8 +41,12 @@ button {
   font-family: 'Quicksand', sans-serif;
 }
 
-.new-biz, .new-event, .new-user-info {
-  height: 700px;
+.new-biz, .new-event {
+  height: 400px;
+  margin: auto;
+}
+.new-user-info {
+  height: 600px;
   margin: auto;
 }
 
@@ -53,6 +58,12 @@ button {
 }
 td {
   padding: 10px;
+}
+.footer {
+  background: linear-gradient(to bottom, #42a1f4, #41f4f1);
+  width: 100%;
+  height: 100px;
+  margin-bottom: 0px;
 }
 
 /*.continue {
