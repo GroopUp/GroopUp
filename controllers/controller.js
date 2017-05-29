@@ -27,33 +27,70 @@ router.get('/view-event/:id', function(req, res) {
     });
 });
 
+// router.post('/view-event/register', function(req, res) {
+//     db.Signup.create({
+
+//     }, {
+//     	where: {
+//     		id: req.params.id
+//     	}
+//     });
+// });
+
+// router.delete('/view-event/unregister/:id', function(req, res) {
+//     db.Signup.destroy({
+
+//     }, {
+//     	where: {
+//     		id: req.params.id
+//     	}
+//     });
+// });
+
+router.get('/edit-event/:id', function(req, res) {
+    db.Event.findOne({
+        where: {
+            id: req.params.id
+        },
+        include: [db.User]
+    }).then(function(data) {
+        res.json(data);
+    });
+});
+
+// router.put('/edit-event/:id', function(req, res) {
+//     db.Event.update({
+
+//     }, {
+//     	where: {
+//     		id: req.params.id
+//     	}
+//     });
+// });
+
 router.get("/new-user", function(req, res) {
     res.render("new-user");
-})
-
-router.get("/new-business", function(req, res) {
-    res.render("new-business");
-})
+});
 
 router.post('/new-user', function(req, res) {
     console.log(req.body);
     db.User.create({
-        name: req.body.name,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
         password: req.body.password,
         email: req.body.email,
+        bio: req.body.bio,
         age: req.body.age,
         sex: req.body.sex,
         picture: req.body.picture
     }).then(function(data) {
         res.json(data);
-
     });
 });
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// router.get('/user-login', function(req, res) {
-//     db.
-// });
+router.get("/new-business", function(req, res) {
+    res.render("new-business");
+});
 
 router.post('/new-business', function(req, res) {
     db.Business.create({
@@ -69,14 +106,7 @@ router.post('/new-business', function(req, res) {
     });
 });
 
-
-
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// router.get('/business-login', function(req, res) {
-//     db.
-// });
-
-// // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// BUILD LOGIC
 // router.post('/quiz', function(req, res) {
 //     db.
 // });
@@ -101,7 +131,7 @@ router.post('/new-event', function(req, res) {
 router.get('/user-account/:id', function(req, res) {
     db.Signup.findAll({
         where: {
-            id: req.body.id
+            id: req.params.id
         },
         include: [db.User, db.Event]
     }).then(function(data) {
@@ -110,7 +140,7 @@ router.get('/user-account/:id', function(req, res) {
 });
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// router.update('/user-account', function(req, res) {
+// router.put('/user-account', function(req, res) {
 //     db.
 // });
 
@@ -126,7 +156,7 @@ router.get('/business-account/:id', function(req, res) {
 });
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// router.update('/business-account', function(req, res) {
+// router.put('/business-account', function(req, res) {
 //     db.
 // });
 
