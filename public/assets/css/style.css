@@ -8,14 +8,17 @@ body {
 .container {
   margin: auto;
   width: 800px;
+
 }
+
 .jumbotron {
   background: linear-gradient(to bottom, #41f4f1, #42a1f4);
   /*background-color: rgba(25, 14, 233, 0);*/
   color: rgb(22, 184, 34);
+  border-radius: 0;
 }
 h1 {
-    font-size: 60px;
+    font-size: 80px;
     font-family: 'Quicksand', sans-serif;
 
 }
@@ -29,17 +32,40 @@ button {
   background-color: rgba(25, 14, 233, 0);
   border-color: rgba(25, 14, 233, 0);
 }
-.buttons {
-  margin-right: 0;
+.logins {
+  width: 350px;
+  margin-top: -50px;
+  float: right;
 }
 .placeholder {
   font-family: 'Quicksand', sans-serif;
 }
 
-.new-biz, .new-event, .new-user-info {
-  height: 700px;
+.new-biz, .new-event {
+  height: 400px;
+  margin: auto;
+}
+.new-user-info {
+  height: 600px;
+  margin: auto;
 }
 
 .quiz {
   height: 900px;
 }
+.new-account, .new-biz-info {
+  margin: auto;
+}
+td {
+  padding: 10px;
+}
+.footer {
+  background: linear-gradient(to bottom, #42a1f4, #41f4f1);
+  width: 100%;
+  height: 100px;
+  margin-bottom: 0px;
+}
+
+/*.continue {
+  padding-left: 80px;
+}*/

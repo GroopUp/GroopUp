@@ -1,66 +1,121 @@
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
-            login
-        </button>
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">login</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                        <form class="create-update-form" action="/" method="GET">
-                          <center>
-                            <div class="form-group">
-                            <label for="user-email">email:</label>
-                            <input type="text" id="email" name="user-email">
-                          </div>
-                            <center>
-                              <div class="form-group">
-                              <label for="user-password">password:</label>
-                              <input type="text" id="pw" name="user-password"><br>
-                            </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary">login</button>
-                          </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal">
-            new user
-        </button>
-        <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">new user</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                        select account type
-              </div>
-              <div class="modal-footer">
-                        <form class="create-update-form" action="/new-user" method="GET">
-                <button type="submit" class="btn btn-primary">user</button>
-                    </form>
-                    <form class="create-update-form" action="/new-business" method="GET">
-                    <button type="submit" class="btn btn-primary">business</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div class="jumbotron">
+          <div class="logins">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+                      login
+                  </button>
+                  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">login</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+
+                                  <ul class="nav nav-tabs">
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#home" role="tab">User</a></li>
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu1" role="tab">Business</a></li>
+                                  </ul>
+                                  
+                                  <div class="tab-content">
+                                    <div id="home" class="tab-pane fade in active" role="tabpanel">
+                                      <form class="create-update-form" action="/signin" method="POST">
+                                            <center>
+                                          <div class="form-group">
+                                          <label for="user-email">email:</label>
+                                          <input type="text" id="email" name="user-email">
+                                        </div>
+                                          <center>
+                                            <div class="form-group">
+                                            <label for="user-password">password:</label>
+                                            <input type="text" id="pw" name="user-password"><br>
+                                          </div>
+
+                                        <button type="submit" class="btn btn-primary">user</button>
+                                       </form>
+                                    </div>
+
+                                    <div id="menu1" class="tab-pane fade" role="tabpanel">
+                                      <form class="create-update-form" action="/bsignin" method="POST">
+                                            <center>
+                                              <div class="form-group">
+                                              <label for="user-email">email:</label>
+                                              <input type="text" id="email" name="email">
+                                            </div>
+                                              <center>
+                                                <div class="form-group">
+                                                <label for="user-password">password:</label>
+                                                <input type="text" id="pw" name="password"><br>
+                                              </div>
+                                      
+                                        <button type="submit" class="btn btn-primary">business</button>
+                                      </form>
+                                    </div>
+
+                        </div>
+                        <div class="modal-footer">
+
+
+                          </div>
+
+
+                          
+                        
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal">
+                      new user
+                  </button>
+                  <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">new user</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                                  select account type
+                        </div>
+                        <div class="modal-footer">
+
+                        <div id="menu2" class="tab-pane fade">
+                          <h3>Menu 2</h3>
+                          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                        </div>
+                        <div id="menu3" class="tab-pane fade">
+                          <h3>Menu 3</h3>
+                          <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                                  <form class="create-update-form" action="/new-user" method="GET">
+                          <button type="submit" class="btn btn-primary">user</button>
+                              </form>
+                              <form class="create-update-form" action="/new-business" method="GET">
+                              <button type="submit" class="btn btn-primary">business</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
       <h1><center>GroopUp</center></h1>
     </div>
+
     <div class="container">
+      <div class="row">
+      <div class ="col-lg-12 search">
+        <div class="form-group">
+        <label for="search-bar"></label>
+        <input type="text" id="search" name="search-bar" placeholder="search events"><br>
+      </div>
+    </div>
+  </div>
       <div class="row">
             <div class ="col-lg-12 events">
             <!-- handlebars generates a list of all events in DB with the name, location, date/time and a button to view the event's page  -->
@@ -81,4 +136,5 @@
             </div>
         </div>
     </div>
-
+    <div class="container footer">
+    </div>
