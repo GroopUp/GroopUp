@@ -137,6 +137,7 @@ router.get("/my-account", function(req, res){
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+// stock index
 router.get('/', function(req, res) {
     db.Event.findAll({
         order: [
@@ -150,6 +151,35 @@ router.get('/', function(req, res) {
     });
 });
 
+// index for user
+router.get('/index-user', function(req, res) {
+    db.Event.findAll({
+        order: [
+            ['createdAt', 'DESC']
+        ]
+    }).then(function(data) {
+        var hbsObject = {
+            event: data
+        }
+        res.render('index-user', hbsObject);
+    });
+});
+
+// index for business
+router.get('/index-business', function(req, res) {
+    db.Event.findAll({
+        order: [
+            ['createdAt', 'DESC']
+        ]
+    }).then(function(data) {
+        var hbsObject = {
+            event: data
+        }
+        res.render('index-business', hbsObject);
+    });
+});
+
+// stock view event
 router.get('/view-event/:id', function(req, res) {
 
     db.Event.findOne({
@@ -173,6 +203,9 @@ router.get("/quiz", function(req, res) {
     res.render("quiz")
 })
 
+// // view event for users, to unregister
+// router.delete('/view-event/unregister/:id', function(req, res) {
+//     db.Signup.destroy({
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // router.get('/user-login', function(req, res) {
