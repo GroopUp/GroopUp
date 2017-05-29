@@ -1,38 +1,64 @@
 <div class="jumbotron">
-  <h1><center>GroopMe</center></h1>
+  <h1><center>GroopUp</center></h1>
   <h3><center>my account</center></h3>
 </div>
 <div class="container">
   <div class="row">
-  
-    <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
-      <div class="form-group">
-        <label for="name">Name: {{this.name}}</label>
-        <input type="text" id="auth" name="name" value="{{this.name}}">
-        <button type="submit">Update Name</button><br>
-        </div>
-      </form>
-      <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
-        <div class="form-group">
-          <label for="email">Name: {{this.email}}</label>
-          <input type="text" id="email" name="name" value="{{this.email}}">
-          <button type="submit">Update Email</button><br>
-          </div>
-        </form>
-        <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
-        <div class="form-group">
-          <label for="password">Password: {{this.password}}</label>
-          <input type="text" id="password" name="password" value="{{this.password}}">
-          <button type="submit">Update Password</button><br>
-          </div>
-        </form>
-        <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
-        <div class="form-group">
-          <label for="picture">Photo: {{this.picture}}</label>
-          <input type="text" id="email" name="name" value="{{this.picture}}">
-          <button type="submit">Update Picture</button><br>
-          </div>
-        </form>
-        
+    <div class="col-lg-12 update-biz">
+      <table class="biz-info-update">
+        <tr>
+          <td>
+            Name: {{this.name}}
+          </td>
+          <td>
+            <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
+              <div class="form-group">
+                <input type="text" id="auth" name="name" value="{{this.name}}">
+                <button type="submit" class="btn btn-primary">Update Name</button><br>
+                </div>
+              </form>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Name: {{this.email}}
+          </td>
+          <td>
+            <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
+              <div class="form-group">
+                <input type="text" id="email" name="name" value="{{this.email}}">
+                <button type="submit" class="btn btn-primary">Update Email</button><br>
+                </div>
+              </form>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Password: {{this.password}}
+          </td>
+          <td>
+            <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
+            <div class="form-group">
+              <input type="text" id="password" name="password" value="{{this.password}}">
+              <button type="submit" class="btn btn-primary">Update Password</button><br>
+              </div>
+            </form>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Photo: {{this.picture}}
+          </td>
+          <td>
+            <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
+            <div class="form-group">
+              <input type="text" id="email" name="name" value="{{this.picture}}">
+              <button type="submit" class="btn btn-primary">Update Picture</button><br>
+              </div>
+            </form>
+          </td>
+        </tr>
+      </table>
       </div>
     </div>
+  </div>

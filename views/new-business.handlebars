@@ -5,33 +5,59 @@
 <div class="container">
   <div class="row">
     <div class ="col-lg-12 new-biz">
-      <form class="create-update-form" action="/new-business" method="POST">
-        <center>
-          <div class="form-group">
-          <label for="email">email:</label>
-          <input type="text" id="email" name="email">
-          <center>
-          </div>
-            <div class="form-group">
-
-            <label for="password">password:</label>
-            <input type="text" id="password" name="password"><br>
-          </div>
-          <div class="form-group">
-          <label for="name">Business Name:</label>
-          <input type="text" id="name" name="name"><br>
-    
-          <!-- <div class="form-group"> -->
-          <div class="form-group">
-          <label for="pw">Phone Number:</label>
-          <input type="text" id="pw" name="phonenumber"><br>
-          <!-- <div class="form-group"> -->
-          <label for="picture">photo url:</label>
-          <input type="text" id="picture" name="picture"><br>
-
-          <button type="submit" id="submit">create account</button>
-        </div>
-        </div>
+      <table class="new-biz-info">
+      <form class="create-update-form" action="/new-event" method="POST">
+        <div class="form-group">
+          <tr>
+            <td>
+              email:
+            </td>
+            <td>
+              <input type="text" id="email" name="email">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              password:
+            </td>
+            <td>
+              <input type="text" id="password" name="password"><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              business name:
+            </td>
+            <td>
+            <input type="text" id="name" name="name"><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              phone number:
+            </td>
+            <td>
+              <input type="text" id="pw" name="phonenumber"><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              photo url:
+            </td>
+            <td>
+              <input type="text" id="picture" name="picture"><br>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <center>
+              <button type="submit" class="btn btn-primary" id="submit">create account</button>
+            </center>
+            </td>
+          </tr>
+          </table>
         </form>
       </div>
     </div>
+  </div>
+</div>
