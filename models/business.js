@@ -30,7 +30,7 @@ module.exports = function(sequelize, Datatypes) {
             }
         },
         picture: {
-            type: Datatypes.STRING,
+            type: Datatypes.TEXT,
             allowNull: false
             // validate: {
             //     isUrl: true

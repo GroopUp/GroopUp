@@ -8,7 +8,7 @@
       <table class="update-account">
         <tr>
           <td>
-            Name: {{this.name}}
+            Name: {{this.id}}
           </td>
           <td>
             <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
@@ -21,12 +21,12 @@
         </tr>
         <tr>
           <td>
-            Name: {{this.email}}
+            Email: {{this.email}}
           </td>
           <td>
             <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
               <div class="form-group">
-                <input type="text" id="email" name="name" value="{{this.email}}">
+                <input type="text" id="email" name="email" value="{{this.email}}">
                 <button type="submit" class="btn btn-primary">Update Email</button><br>
                 </div>
               </form>

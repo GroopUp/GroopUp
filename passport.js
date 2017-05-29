@@ -1,4 +1,4 @@
-var passport = require("passport");
+// var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 var db = require("./models");
 var bCrypt = require("bcrypt-nodejs");
@@ -45,6 +45,7 @@ module.exports = function(passport, user) {
         },
         //storing user's details
         function(req, email, password, done) {
+            console.log("working");
             var generateHash = function(password) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
             };
@@ -61,6 +62,7 @@ module.exports = function(passport, user) {
                         name: req.body.name,
                         age: req.body.age,
                         sex: req.body.sex,
+                        bio: req.body.bio,
                         picture: req.body.picture
                     };
 
