@@ -47,7 +47,7 @@ module.exports = function(sequelize, Datatypes) {
             }
         }, // end of sex
         picture: {
-            type: Datatypes.STRING,
+            type: Datatypes.TEXT,
             allowNull: false,
             validate: {
                 isUrl: true

@@ -37,7 +37,7 @@ module.exports = function(sequelize, Datatypes) {
             }
         }, // end of age
         picture: {
-            type: Datatypes.STRING,
+            type: Datatypes.TEXT,
             allowNull: false,
             validate: {
                 isUrl: true
