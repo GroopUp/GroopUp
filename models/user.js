@@ -44,7 +44,7 @@ module.exports = function(sequelize, Datatypes) {
             type: Datatypes.BOOLEAN,
             allowNull: false,
             validate: {
-                isIn: ['0', '1', ''],
+                
                 isAlphanumeric: true
             }
         }, // end of sex

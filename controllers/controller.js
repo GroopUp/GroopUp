@@ -469,6 +469,8 @@ router.post('/quizdone', function(req, res) {
         where: {
             id: req.user.id
         }
+    }).then(function(data){
+        res.redirect('/user');
     })
 
 
