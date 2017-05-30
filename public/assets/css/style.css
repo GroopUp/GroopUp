@@ -6,8 +6,9 @@ body {
 }
 
 .container {
+
   margin: auto;
-  width: 800px;
+  width: 100%;
 
 }
 
@@ -16,6 +17,12 @@ body {
   /*background-color: rgba(25, 14, 233, 0);*/
   color: rgb(22, 184, 34);
   border-radius: 0;
+}
+
+.events {
+
+  width: 950px;
+  margin: auto;
 }
 h1 {
     font-size: 80px;
