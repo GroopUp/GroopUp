@@ -91,7 +91,7 @@
                     </div>
                   </div>
                   </div>
-      <h1><center>GroopUp</center></h1>
+                  <form class= "home" action="/" method="GET"><center><button><h1>GroopUp</h1></button></center></form>
     </div>
     <div class="container">
       <div class="row">
@@ -105,12 +105,13 @@
       <div class="row">
             <div class ="col-lg-12 events">
             <!-- handlebars generates a list of all events in DB with the name, location, date/time and a button to view the event's page  -->
+
             <ul id="eventlist">
                 {{#each event}}
               <li>
+
               <ul id="eventinfo">
                         <center>
-                        <form action="/{{this.id}}?_method=GET" method="GET">
                           <h3>{{title}}</h3>
                           </li>
                             <li>
@@ -123,6 +124,8 @@
                               {{date}}
                             </li>
                             <li>
+
+                              <form action="/{{this.id}}?_method=GET" method="GET">
                                 <button type="submit" class="btn btn-primary user-settings">view event</button>
                               </form>
                             </li>
@@ -131,6 +134,7 @@
                       </li>
                 {{/each}}
             </ul>
+
             </div>
         </div>
     </div>

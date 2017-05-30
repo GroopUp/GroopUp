@@ -1,77 +1,69 @@
 <div class="jumbotron">
-          <div class="biz-tabs">
-            <ul id ="tabs">
-              <li>
-                <form class="create-update-form" action="/my-business" method="GET">
-        <button type="submit" class="btn btn-primary user-settings">my account</button>
-            </form>
-              </li>
-              <li>
-                <form class="create-update-form" action="/new-event" method="GET">
-        <button type="submit" class="btn btn-primary user-settings">create event</button>
-            </form>
-              </li>
-              <li>
-                <form class="create-update-form" action="/logout" method="GET">
-        <button type="submit" class="btn btn-primary logout">log out</button>
-            </form>
-              </li>
-            </ul>
+  <div class="biz-tabs">
+    <ul id="tabs">
+      <li>
+        <form class="create-update-form" action="/my-business" method="GET">
+          <button type="submit" class="btn btn-primary user-settings">my account</button>
+        </form>
+      </li>
+      <li>
+        <form class="create-update-form" action="/new-event" method="GET">
+          <button type="submit" class="btn btn-primary user-settings">create event</button>
+        </form>
+
+      </li>
+      <li>
+        <form class="create-update-form" action="/logout" method="GET">
+          <button type="submit" class="btn btn-primary logout">log out</button>
+        </form>
+      </li>
+    </ul>
         </div>
-      <h1><center>GroopUp</center></h1>
+  </div>
+<form class= "home" action="/business" method="GET"><center><button><h1>GroopUp</h1></button></center></form>
+</div>
 
- </div>
-
-   <div class="container">
-      <div class="row">
-      <div class ="col-lg-12 search">
-        <div class="form-group">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 search">
+      <div class="form-group">
         <label for="search-bar"></label>
         <input type="text" id="search" name="search-bar" placeholder="search events"><br>
       </div>
     </div>
   </div>
-      <div class="row">
-            <div class ="col-lg-12 events">
-            <!-- handlebars generates a list of all events in DB with the name, location, date/time and a button to view the event's page  -->
-                <ul id ="eventlist" style="list-style:none">
-                    <li>{{#each event}}
+  <div class="row">
+    <div class="col-lg-12 events">
+      <!-- handlebars generates a list of all events in DB with the name, location, date/time and a button to view the event's page  -->
+      <ul id="eventlist">
+          {{#each event}}
+        <li>
 
-
-                   <div class="eachevent">
-                    <ul id="eventinfo" style="list-style:none">
-                            <center>
-                            <li>  <h3>{{title}}</h3>
-                              </li>
-                                <li>
-                                  <div class="eventpic">
-                                <form action="/{{this.id}}" method="GET">
-                                <button type="submit"><img height="200px" width="280" src="{{picture}}"/>
-                                  <div class="overlay"></button></form>
-                                  <div class="text">view event</div>
-                                </div>
-
-
-                               </li>
-                                <li>
-                                  {{location}}
-                                </li>
-                                <li>
-                                  {{date}}
-                                </li>
-                                <li>
-                                  <form action="/{{this.id}}?_method=GET" method="GET">
-                                    <button type="submit" class="btn btn-primary user-settings">view event</button>
-                                  </form>
-                                </li>
-                              </ul>
-                            </center>
-                          </div>
-                          </li>
-                    {{/each}}
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container footer">
-    </div>
+        <ul id="eventinfo">
+                  <center>
+                    <h3>{{title}}</h3>
+                    </li>
+                      <li>
+                        <img height="200px" width="280" src="{{picture}}"/>
+                      </li>
+                      <li>
+                        {{location}}
+                      </li>
+                      <li>
+                        {{date}}
+                      </li>
+                      <li>
+                        <form action="/{{this.id}}?_method=GET" method="GET">
+                          <button type="submit" class="btn btn-primary user-settings">view event</button>
+                        </form>
+                      </li>
+                    </ul>
+                  </center>
+                </li>
+          {{/each}}
+      </ul>
+  </div>
+</div>
+</div>
+<div class="container footer">
+</div>

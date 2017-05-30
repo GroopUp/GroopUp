@@ -31,6 +31,12 @@ h1 {
 button {
   background-color: rgba(25, 14, 233, 0);
   border-color: rgba(25, 14, 233, 0);
+  color: rgb(22, 184, 34);
+}
+.logins-user {
+  width: 250px;
+  margin-top: -55px;
+  float: right;
 }
 .logins-user {
   width: 250px;
@@ -116,7 +122,6 @@ opacity: .8;
 
 }
 
-
 .text {
   color: white;
   font-size: 20px;
@@ -125,6 +130,11 @@ opacity: .8;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+}
+
+.home {
+  width: 100%;
+  margin: auto;
 }
 /*.continue {
   padding-left: 80px;

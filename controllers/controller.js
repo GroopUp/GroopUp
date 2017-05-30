@@ -6,7 +6,7 @@ var passport = require("passport");
 var bCrypt = require("bcrypt-nodejs");
 
 
-//user authentication 
+//user authentication
 
 
 router.get("/new-user", authController.signup);
@@ -56,6 +56,7 @@ router.get("/new-event", function(req, res) {
         res.redirect("/");
     }
 })
+
 
 router.post('/new-event', function(req, res) {
     if (req.isAuthenticated()) {
