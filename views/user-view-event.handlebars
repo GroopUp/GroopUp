@@ -1,0 +1,22 @@
+<div class="jumbotron">
+<h1><center>GroopUp</center></h1>
+</div>
+<div class="container">
+<div class="row">
+    <div class ="col-lg-12 event">
+      <h1>{{this.title}}</h1>
+      <h3>{{this.location}}</h3>
+      <h3>{{this.date}}</h3>
+      <h3>{{this.time}}</h3>
+      <h3>{{this.attendance_cap}}</h3>
+      <h3>{{this.picture}}</h3>
+      <form action="/{{this.id}}?_method=PUT" method="POST">
+        <button type="submit">join this event</button>
+      </form>
+
+
+     </div>
+   </div>
+ </div>
+ <div class="container footer">
+ </div>

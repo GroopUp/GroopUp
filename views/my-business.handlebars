@@ -4,7 +4,7 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-lg-12 update-biz">
+    <div class="col-lg-6 update-biz">
       <table class="biz-info-update">
 
         <form class="create-update-form" action="/my-business?_method=PUT" method="POST">
@@ -53,14 +53,42 @@
         <tr>
           <td colspan="2">
             <center>
-              <button type="submit" class="btn btn-primary" id="submit">create account</button>
+              <button type="submit" class="btn btn-primary" id="submit">update account</button>
             </center>
           </td>
         </tr>
       </table>
       </div>
     </div>
+    <div class="col-lg-6 update-biz">
+      <ul id="eventlist">
+          {{#each event}}
+        <li>
+        <ul id="eventinfo">
+                <li>
+                <h3>My Events</h3>
+                </li>
+                 <li>
+                    {{title}}
+                    </li>
+                      <li>
+                        <img height="100px" width="180" src="{{picture}}"/>
+                      </li>
+                      <li>
+                        {{date}}
+                      </li>
+                      <li>
+                        <form action="/{{this.id}}?_method=GET" method="GET">
+                          <button type="submit" class="btn btn-primary">view event</button>
+                        </form>
+                      </li>
+                    </ul>
+                  </center>
+                </li>
+          {{/each}}
+      </ul>
   </div>
+</div>
 </div>
   <div class="container footer">
   </div>
