@@ -389,10 +389,10 @@ router.get('/view-event/:id', function(req, res) {
         }
     }).then(function(data) {
         console.log(data);
-        var hbsObject = {
-            event: data
-        }
-        res.render("view-event", hbsObject);
+        // var hbsObject = {
+        //     event: data
+        // }
+        res.render("view-event", data.dataValues);
     });
 });
 
