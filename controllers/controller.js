@@ -60,7 +60,7 @@ router.post('/new-event', function(req, res) {
         db.Event.create({
             title: req.body.title,
             location: req.body.location,
-            date: req.body.location,
+            date: req.body.date,
             time: req.body.time,
             picture: req.body.picture,
             attendance_cap: parseInt(req.body.attendance_cap),
@@ -217,10 +217,19 @@ router.get("/quiz", function(req, res) {
 //     db.
 // });
 
-// // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// router.post('/quiz', function(req, res) {
-//     db.
-// });
+router.post('/quiz', function(req, res) {
+    console.log("RECEIVED ON BACK-END");
+    console.log(req.body.result);
+    db.User.update({
+        uquizresults: req.body.result
+    }, {
+        where: {
+            id: req.user.id
+        }
+    }).then(function(data) {
+        res.redirect('/');
+    });
+});
 
 
 // TEST
