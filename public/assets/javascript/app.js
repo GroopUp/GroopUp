@@ -33,7 +33,7 @@ $("#submit").on("click", function() {
     var currentURL = window.location.origin;
 
     // AJAX post the data to the friends API. 
-    $.post(currentURL + "/quiz", {"result":JSON.stringify(scores)}, function(data) {
+    $.post(currentURL + "/quizdone", {"result":JSON.stringify(scores)}, function(data) {
         console.log(scores);
     });
     // } else {

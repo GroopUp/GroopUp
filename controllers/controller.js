@@ -372,7 +372,7 @@ router.get("/quiz", function(req, res) {
 //     db.
 // });
 
-router.post('/quiz', function(req, res) {
+router.post('/quizdone', function(req, res) {
     console.log("RECEIVED ON BACK-END");
     console.log(req.body.result);
     db.User.update({
@@ -382,7 +382,7 @@ router.post('/quiz', function(req, res) {
             id: req.user.id
         }
     }).then(function(data) {
-        res.redirect('/');
+        res.redirect('/user');
     });
 });
 
