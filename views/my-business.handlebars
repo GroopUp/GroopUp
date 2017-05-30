@@ -6,7 +6,9 @@
   <div class="row">
     <div class="col-lg-12 update-biz">
       <table class="biz-info-update">
-        <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
+
+        <form class="create-update-form" action="/my-business?_method=PUT" method="POST">
+
           <div class="form-group">
         <tr>
           <td>
@@ -34,10 +36,25 @@
         </tr>
         <tr>
           <td>
+            phonenumber:
+          </td>
+          <td>
+              <input type="phonenumber" id="phonenumber" name="phonenumber" value="{{this.phonenumber}}">
+          </td>
+        </tr>
+        <tr>
+          <td>
           photo:<img height="100px" src="{{this.picture}}"/>
            </td>
           <td>
             <input type="text" id="email" name="picture" value="{{this.picture}}">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <center>
+              <button type="submit" class="btn btn-primary" id="submit">create account</button>
+            </center>
           </td>
         </tr>
       </table>

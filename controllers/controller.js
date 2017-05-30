@@ -3,6 +3,8 @@ var db = require('../models');
 var router = express.Router();
 var authController = require('./authcontroller.js');
 var passport = require("passport");
+var bCrypt = require("bcrypt-nodejs");
+
 
 //user authentication
 
@@ -29,9 +31,9 @@ router.post('/new-business', passport.authenticate('local-bizsignup', {
     failureRedirect: '/new-business'
 }));
 
-router.get("/logout", function(req, res){
-     req.flash("error", "You are logged out.");
-    req.session.destroy(function(err){
+router.get("/logout", function(req, res) {
+    req.flash("error", "You are logged out.");
+    req.session.destroy(function(err) {
         res.redirect("/");
     });
 
@@ -77,20 +79,20 @@ router.post('/new-event', function(req, res) {
 router.get('/business', function(req, res) {
     //protecting business route
     if (req.isAuthenticated()) {
-        if(req.user.phonenumber){
-        db.Event.findAll({
-            order: [
-                ['createdAt', 'DESC']
-            ]
-        }).then(function(data) {
-            var hbsObject = {
-                event: data
-            }
-            res.render('index-business', hbsObject);
-        });
-    } else {
-        res.redirect("/user")
-    }
+        if (req.user.phonenumber) {
+            db.Event.findAll({
+                order: [
+                    ['createdAt', 'DESC']
+                ]
+            }).then(function(data) {
+                var hbsObject = {
+                    event: data
+                }
+                res.render('index-business', hbsObject);
+            });
+        } else {
+            res.redirect("/user")
+        }
     } else {
         res.redirect("/")
     }
@@ -118,37 +120,189 @@ router.get('/user', function(req, res) {
     }
 });
 
-router.get("/my-account", function(req, res){
-    if (req.isAuthenticated()){
-        if (req.user.age){
+router.get("/my-account", function(req, res) {
+    if (req.isAuthenticated()) {
+        console.log("checking", req.user.id)
+        if (req.user.age) {
             db.User.findOne({
                 where: {
                     id: req.user.id
                 }
-            }).then(function(data){
-                var hbsObject = {
-                event: data
-            }
-            res.render("my-acount", hbsObject);
+            }).then(function(data) {
+                res.render("my-acount", data.dataValues);
             })
         }
     }
 })
 
+router.put("/my-account", function(req, res) {
+
+    var generateHash = function(password) {
+        return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
+    };
+    var userId = req.user.id;
+    db.User.findOne({ where: { id: userId } }).then(function(user) {
+
+        if (user.email === req.body.email) {
+            //this will check if the user has put the new password in.
+            if (user.password === req.body.password) {
+                var userPassword = req.body.password;
+                
+            } else {
+                //if user has put the new password, it has to be hashed again.
+                var userPassword = generateHash(req.body.password);
+            }
+            var data = {
+                email: req.body.email,
+                password: userPassword,
+                name: req.body.name,
+                age: req.body.age,
+                picture: req.body.picture
+            };
+            console.log("testing", data);
+            db.User.update(data, { where: { id: userId } }).then(function(result) {
+                res.redirect("/my-account");
+            })
+        } else {
+            db.User.findOne({ where: { email: req.body.email } }).then(function(user) {
+
+                if (user) {
+                    req.flash("error", "That email is already taken.");
+                    res.redirect("/my-account");
+                    // return done(null, false, { message: 'That email is already taken' });
+                } else {
+                    if (user.password === req.body.password) {
+                        var userPassword = req.body.password;
+                    } else {
+                        var userPassword = generateHash(req.body.password);
+                    }
+                    var data = {
+                        email: req.body.email,
+                        password: userPassword,
+                        name: req.body.name,
+                        age: req.body.age,
+                        picture: req.body.picture
+                    };
+                    db.User.update(data, { where: { id: userId } }).then(function(result) {
+                            res.redirect("/my-account");
+                        })
+                        // db.User.create(data).then(function(newUser, created) {
+                        //     if (!newUser) {
+                        //         req.flash("error", "Sorry try again");
+                        //         return done(null, false);
+                        //     }
+                        //     if (newUser) {
+                        //         req.flash("success_msg", "Your account has been created.");
+                        //         return done(null, newUser);
+                        //     }
+                        // });
+                }
+            });
+        }
+    })
+})
+
+router.get('/my-business', function(req, res) {
+    if (req.isAuthenticated()) {
+        console.log("data", req.user)
+        if (req.user.phonenumber) {
+            db.Business.findOne({
+                where: {
+                    id: req.user.id
+                }
+            }).then(function(data) {
+                res.render("my-business", data.dataValues);
+            })
+        }
+    }
+});
+
+router.put("/my-business", function(req, res) {
+    
+    var generateHash = function(password) {
+        return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
+    };
+    var businessId = req.user.id;
+    db.Business.findOne({ where: { id: businessId } }).then(function(business) {
+
+        if (business.email === req.body.email) {
+            //this will check if the business has put the new password in.
+            if (business.password === req.body.password) {
+                var businessPassword = req.body.password;
+                
+            } else {
+                //if business has put the new password, it has to be hashed again.
+                var businessPassword = generateHash(req.body.password);
+            }
+            var data = {
+                email: req.body.email,
+                password: businessPassword,
+                name: req.body.name,
+                phonenumber: req.body.phonenumber,
+                picture: req.body.picture
+            };
+            console.log("testing", data);
+            db.Business.update(data, { where: { id: businessId } }).then(function(result) {
+                res.redirect("/my-business");
+            })
+        } else {
+            db.Business.findOne({ where: { email: req.body.email } }).then(function(business) {
+
+                if (business) {
+                    req.flash("error", "That email is already taken.");
+                    res.redirect("/my-business");
+                    // return done(null, false, { message: 'That email is already taken' });
+                } else {
+                    if (business.password === req.body.password) {
+                        var businessPassword = req.body.password;
+                    } else {
+                        var businessPassword = generateHash(req.body.password);
+                    }
+                    var data = {
+                        email: req.body.email,
+                        password: businessPassword,
+                        name: req.body.name,
+                        phonenumber: req.body.phonenumber,
+                        picture: req.body.picture
+                    };
+                    db.Business.update(data, { where: { id: businessId } }).then(function(result) {
+                            res.redirect("/my-business");
+                        })
+                        // db.business.create(data).then(function(newUser, created) {
+                        //     if (!newUser) {
+                        //         req.flash("error", "Sorry try again");
+                        //         return done(null, false);
+                        //     }
+                        //     if (newUser) {
+                        //         req.flash("success_msg", "Your account has been created.");
+                        //         return done(null, newUser);
+                        //     }
+                        // });
+                }
+            });
+        }
+    })
+})
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 router.get('/', function(req, res) {
-    db.Event.findAll({
-        order: [
-            ['createdAt', 'DESC']
-        ]
-    }).then(function(data) {
-        var hbsObject = {
-            event: data
-        }
-        res.render('index', hbsObject);
-    });
+    if (!req.isAuthenticated()) {
+        db.Event.findAll({
+            order: [
+                ['createdAt', 'DESC']
+            ]
+        }).then(function(data) {
+            var hbsObject = {
+                event: data
+            }
+            res.render('index', hbsObject);
+        });
+    } else {
+        res.redirect("/user")
+    }
 });
 
 router.get('/view-event/:id', function(req, res) {
@@ -208,16 +362,6 @@ router.get('/user-account/:id', function(req, res) {
 //     db.
 // });
 
-router.get('/business-account/:id', function(req, res) {
-    db.Business.findOne({
-        where: {
-            id: req.body.id
-        },
-        include: [db.Event]
-    }).then(function(data) {
-        res.json(data);
-    });
-});
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // router.update('/business-account', function(req, res) {
