@@ -81,6 +81,7 @@ router.get('/business', function(req, res) {
     //protecting business route
     if (req.isAuthenticated()) {
         if (req.user.phonenumber) {
+            console.log(req.user.id);
         db.Event.findAll({
             order: [
                 ['date'],
@@ -149,7 +150,7 @@ router.get("/my-account", function(req, res) {
                     id: req.user.id
                 }
             }).then(function(data) {
-                res.render("my-acount", data.dataValues);
+                res.render("my-account", data.dataValues);
             })
         }
     }
@@ -181,7 +182,7 @@ router.put("/my-account", function(req, res) {
             };
             console.log("testing", data);
             db.User.update(data, { where: { id: userId } }).then(function(result) {
-                res.redirect("/my-account");
+                res.redirect("/my-acount");
             })
         } else {
             db.User.findOne({ where: { email: req.body.email } }).then(function(user) {
@@ -204,7 +205,7 @@ router.put("/my-account", function(req, res) {
                         picture: req.body.picture
                     };
                     db.User.update(data, { where: { id: userId } }).then(function(result) {
-                            res.redirect("/my-account");
+                            res.redirect("/my-acount");
                         })
                         // db.User.create(data).then(function(newUser, created) {
                         //     if (!newUser) {
@@ -229,8 +230,10 @@ router.get('/my-business', function(req, res) {
             db.Business.findOne({
                 where: {
                     id: req.user.id
-                }
+                },
+                include: [db.Event]
             }).then(function(data) {
+                console.log("this is the data--------------", data.dataValues);
                 res.render("my-business", data.dataValues);
             })
         }

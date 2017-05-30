@@ -4,18 +4,19 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-lg-12 update-biz">
+    <div class="col-lg-6 update-biz">
+      <h3>My Info</h3>
       <table class="biz-info-update">
 
-        <form class="create-update-form" action="/my-business?_method=PUT" method="POST">
+       <form class="create-update-form" action="/my-business?_method=PUT" method="POST">
 
-          <div class="form-group">
+         <div class="form-group">
         <tr>
           <td>
             name:
           </td>
           <td>
-          <input type="text" id="auth" name="name" value="{{this.name}}">
+          <input type="text" id="auth" name="name" value="{{this.name}}" required>
           </td>
         </tr>
         <tr>
@@ -23,7 +24,7 @@
             email:
           </td>
           <td>
-          <input type="text" id="email" name="email" value="{{this.email}}">
+          <input type="email" id="email" name="email" value="{{this.email}}" required>
           </td>
         </tr>
         <tr>
@@ -31,34 +32,64 @@
             password:
           </td>
           <td>
-              <input type="password" id="password" name="password" value="{{this.password}}">
+              <input type="password" id="password" name="password" value="{{this.password}}" required>
           </td>
         </tr>
         <tr>
           <td>
-            phonenumber:
+
+           phone number:
           </td>
           <td>
-              <input type="phonenumber" id="phonenumber" name="phonenumber" value="{{this.phonenumber}}">
+              <input type="phonenumber" id="phonenumber" name="phonenumber" value="{{this.phonenumber}}" required>
           </td>
         </tr>
         <tr>
           <td>
-          photo:<img height="100px" src="{{this.picture}}"/>
+          photo:<br/><img height="100px" src="{{this.picture}}"/>
            </td>
           <td>
-            <input type="text" id="email" name="picture" value="{{this.picture}}">
+            <input type="url" id="picture" name="picture" value="{{this.picture}}" required>
           </td>
         </tr>
         <tr>
           <td colspan="2">
             <center>
-              <button type="submit" class="btn btn-primary" id="submit">create account</button>
+              <button type="submit" class="btn btn-primary" id="submit">update account</button>
             </center>
-          </td>
+
+         </td>
         </tr>
       </table>
       </div>
+    </div>
+    <div class="col-lg-6 myevents">
+      <h3>My Events</h3>
+      <ul id="eventlist">
+          {{#each this.Events}}
+        <li>
+        <ul id="eventinfo">
+                    <h3>{{this.title}}</h3>
+                    </li>
+                      <li>
+                        <img height="200px" width="280" src="{{picture}}"/>
+                      </li>
+                      <li>
+                        {{this.location}}
+                      </li>
+                      <li>
+                        {{this.date}} {{this.time}}
+                      </li>
+                      <li>
+                        <form action="/{{this.id}}?_method=GET" method="GET">
+                          <button type="submit" class="btn btn-primary">view event</button>
+                        </form>
+                      </li>
+                    </ul>
+                  </center>
+                </li>
+          {{/each}}
+      </ul>
     </div>
   </div>
 </div>
