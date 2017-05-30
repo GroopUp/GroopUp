@@ -110,9 +110,31 @@
                         {{this.date}} {{this.time}}
                       </li>
                       <li>
-                        <form action="/{{this.id}}?_method=GET" method="GET">
-                          <button type="submit" class="btn btn-primary">view event</button>
-                        </form>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{id}}">
+                        View Event
+                        </button>
+                        <div class="modal fade" id="{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title" id="exampleModalLabel" style="margin: auto">{{this.title}}</h1>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3>Location: {{this.location}}</h3>
+                                        <h3>Date: {{this.date}}</h3>
+                                        <h3>Time: {{this.time}}</h3>
+                                        <img height="200px" width="280" src="{{picture}}" />
+                                        <h3>Max limit: {{this.attendance_cap}}</h3>
+                                        <h3>Total signed up: {{totalUsers}}</h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                       </li>
                     </ul>
 
