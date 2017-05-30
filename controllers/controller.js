@@ -6,7 +6,7 @@ var passport = require("passport");
 var bCrypt = require("bcrypt-nodejs");
 
 
-//user authentication 
+//user authentication
 
 
 router.get("/new-user", authController.signup);
@@ -57,12 +57,13 @@ router.get("/new-event", function(req, res) {
     }
 })
 
+
 router.post('/new-event', function(req, res) {
     if (req.isAuthenticated()) {
         db.Event.create({
             title: req.body.title,
             location: req.body.location,
-            date: req.body.location,
+            date: req.body.date,
             time: req.body.time,
             picture: req.body.picture,
             attendance_cap: parseInt(req.body.attendance_cap),
