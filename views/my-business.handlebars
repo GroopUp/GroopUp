@@ -5,6 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 update-biz">
+      <h3>My Info</h3>
       <table class="biz-info-update">
 
         <form class="create-update-form" action="/my-business?_method=PUT" method="POST">
@@ -63,12 +64,11 @@
       </div>
     </div>
     <div class="col-lg-6 myevents">
+      <h3>My Events</h3>
       <ul id="eventlist">
           {{#each event}}
         <li>
-
         <ul id="eventinfo">
-                  <center>
                     <h3>{{title}}</h3>
                     </li>
                       <li>
