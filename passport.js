@@ -8,7 +8,7 @@ module.exports = function(passport, user) {
     //Serialize Sessions
     //This will create cookies and stored them in the session
     passport.serializeUser(function(user, done) {
-        console.log("serial",user)
+        // console.log("serial",user)
         //saving user's unique colume to verify the type of table when desealize
         var key = {
             id: user.id,
