@@ -239,20 +239,20 @@ router.put("/my-account", function(req, res) {
     })
 })
 
-router.get('/my-business', function(req, res) {
-    if (req.isAuthenticated()) {
-        console.log("data", req.user)
-        if (req.user.phonenumber) {
-            db.Business.findOne({
-                where: {
-                    id: req.user.id
-                }
-            }).then(function(data) {
-                res.render("my-business", data.dataValues);
-            })
-        }
-    }
-});
+// router.get('/my-business', function(req, res) {
+//     if (req.isAuthenticated()) {
+//         console.log("data", req.user)
+//         if (req.user.phonenumber) {
+//             db.Business.findOne({
+//                 where: {
+//                     id: req.user.id
+//                 }
+//             }).then(function(data) {
+//                 res.render("my-business", data.dataValues);
+//             })
+//         }
+//     }
+// });
 
 router.put("/my-business", function(req, res) {
 
