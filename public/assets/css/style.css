@@ -58,10 +58,19 @@ button {
 .placeholder {
   font-family: 'Quicksand', sans-serif;
 }
+.new-event {
+  width: 500px;
+  margin: auto;
+}
 
+/*.myevents {
+  margin-right: 0;
+  float: right;
+}*/
 .new-biz, .new-event {
   height: 400px;
   margin: auto;
+
 }
 .new-user-info {
   height: 600px;
