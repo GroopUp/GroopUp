@@ -43,6 +43,22 @@ router.get("/logout", function(req, res) {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //Protected Routes
+router.get('/my-business', function(req, res) {
+    if (req.isAuthenticated()) {
+        console.log("data", req.user)
+        if (req.user.phonenumber) {
+            db.Business.findOne({
+                where: {
+                    id: req.user.id
+                },
+                include: [db.Event]
+            }).then(function(data) {
+                console.log("this is the data--------------", data.dataValues.Events);
+                res.render("my-business", data.dataValues);
+            })
+        }
+    }
+});
 
 router.get("/new-event", function(req, res) {
     console.log(req.user);

@@ -1,4 +1,24 @@
 <div class="jumbotron">
+  <div class="biz-tabs">
+    <ul id="tabs">
+      <li>
+        <form class="create-update-form" action="/business" method="GET">
+          <button type="submit" class="btn btn-primary user-settings">home</button>
+        </form>
+      </li>
+      <li>
+        <form class="create-update-form" action="/new-event" method="GET">
+          <button type="submit" class="btn btn-primary user-settings">create event</button>
+        </form>
+
+      </li>
+      <li>
+        <form class="create-update-form" action="/logout" method="GET">
+          <button type="submit" class="btn btn-primary logout">log out</button>
+        </form>
+      </li>
+    </ul>
+        </div>
   <form class= "home" action="/business" method="GET"><center><button><h1>GroopUp</h1></button></center></form>
   <h3><center>my account</center></h3>
 </div>
@@ -16,7 +36,7 @@
             name:
           </td>
           <td>
-          <input type="text" id="auth" name="name" value="{{this.name}}">
+          <input type="text" id="auth" name="name" value="{{this.name}}" required>
           </td>
         </tr>
         <tr>
@@ -24,7 +44,7 @@
             email:
           </td>
           <td>
-          <input type="text" id="email" name="email" value="{{this.email}}">
+          <input type="email" id="email" name="email" value="{{this.email}}" required>
           </td>
         </tr>
         <tr>
@@ -32,7 +52,7 @@
             password:
           </td>
           <td>
-              <input type="password" id="password" name="password" value="{{this.password}}">
+              <input type="password" id="password" name="password" value="{{this.password}}" required>
           </td>
         </tr>
         <tr>
@@ -41,15 +61,15 @@
             phone number:
           </td>
           <td>
-              <input type="phonenumber" id="phonenumber" name="phonenumber" value="{{this.phonenumber}}">
+              <input type="phonenumber" id="phonenumber" name="phonenumber" value="{{this.phonenumber}}" required>
           </td>
         </tr>
         <tr>
           <td>
-          photo:<img height="100px" src="{{this.picture}}"/>
+          photo:<br/><img height="100px" src="{{this.picture}}"/>
            </td>
           <td>
-            <input type="text" id="email" name="picture" value="{{this.picture}}">
+            <input type="url" id="picture" name="picture" value="{{this.picture}}" required>
           </td>
         </tr>
         <tr>
@@ -66,19 +86,19 @@
     <div class="col-lg-6 myevents">
       <h3>My Events</h3>
       <ul id="eventlist">
-          {{#each event}}
+          {{#each this.Events}}
         <li>
         <ul id="eventinfo">
-                    <h3>{{title}}</h3>
+                    <h3>{{this.title}}</h3>
                     </li>
                       <li>
                         <img height="200px" width="280" src="{{picture}}"/>
                       </li>
                       <li>
-                        {{location}}
+                        {{lthis.location}}
                       </li>
                       <li>
-                        {{date}}
+                        {{this.date}} {{this.time}}
                       </li>
                       <li>
                         <form action="/{{this.id}}?_method=GET" method="GET">

@@ -1,4 +1,32 @@
 <div class="jumbotron">
+  <div class="logins-user">
+    <ul id ="tabs-user">
+      <li>
+    <form class="create-update-form" action="/my-account/" method="GET">
+<button type="submit" class="btn btn-primary user-settings">my account</button>
+</form>
+</li>
+    <li>
+    <form class="create-update-form" action="/logout" method="GET">
+      <button type="submit" class="btn btn-primary logout">log out</button>
+</form>
+</li>
+</ul>
+</div>
+  <div class="logins-user">
+    <ul id ="tabs-user">
+      <li>
+    <form class="create-update-form" action="/user" method="GET">
+<button type="submit" class="btn btn-primary user-settings">home</button>
+</form>
+</li>
+    <li>
+    <form class="create-update-form" action="/logout" method="GET">
+      <button type="submit" class="btn btn-primary logout">log out</button>
+</form>
+</li>
+</ul>
+</div>
   <form class= "home" action="/user" method="GET"><center><button><h1>GroopUp</h1></button></center></form>
   <h3><center>my account</center></h3>
 </div>
@@ -14,7 +42,7 @@
             name:
           </td>
           <td>
-              <input type="text" id="auth" name="name" value="{{this.name}}">
+              <input type="text" id="auth" name="name" value="{{this.name}}" required>
           </td>
         </tr>
         <tr>
@@ -22,7 +50,7 @@
             email:
           </td>
           <td>
-                <input type="text" id="email" name="email" value="{{this.email}}">
+                <input type="email" id="email" name="email" value="{{this.email}}" required>
           </td>
         </tr>
         <tr>
@@ -38,7 +66,7 @@
             photo: <img height="100px" src={{this.picture}}/>
           </td>
           <td>
-              <input type="text" id="email" name="picture" value="{{this.picture}}">
+              <input type="url" id="email" name="picture" value="{{this.picture}}" required>
           </td>
         </tr>
         <tr>
@@ -64,8 +92,7 @@
             age:
           </td>
           <td>
-              <input type="text" id="age" name="age" value="{{this.age}}">
-          </td>
+Age: <input type="number" size="6" name="age" min="18" max="99" value="0" required>          </td>
         </tr>
         <tr>
           <td colspan="2">
