@@ -435,7 +435,7 @@ router.post("/event-sign-up/:id", function(req, res) {
                     totalUsers: current
                 }, {
                     where: {
-                        id: req.user.id
+                        id: req.params.id
                     }
                 }).then(function(data3) {
                     res.redirect("/user");

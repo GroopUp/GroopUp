@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "outman123",
-    "database": "groopup",
+    "password": "ninja",
+    "database": "groopuptesting",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
