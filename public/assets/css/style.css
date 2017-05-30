@@ -31,10 +31,16 @@ h1 {
 button {
   background-color: rgba(25, 14, 233, 0);
   border-color: rgba(25, 14, 233, 0);
+  color: rgb(22, 184, 34);
+}
+.logins-user {
+  width: 250px;
+  margin-top: -55px;
+  float: right;
 }
 .logins {
-  width: 350px;
-  margin-top: -50px;
+  width: 200px;
+  margin-top: -55px;
   float: right;
 }
 .placeholder {
@@ -65,7 +71,66 @@ td {
   height: 100px;
   margin-bottom: 0px;
 }
+.biz-tabs {
+  /*width: 450px;*/
+  margin-top: -55px;
+  float: right;}
 
+#tabs li {
+  display: inline-block;
+  list-style-type: none;
+
+}
+#tabs-user li {
+  display: inline-block;
+  list-style-type: none;
+
+}
+
+#eventlist li {
+  display: inline-block;
+  list-style-type: none;
+}
+#eventinfo li {
+  display:list-item;
+  list-style-type: none;
+}
+.eventpic {
+  position: relative;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgb(22, 184, 34);
+  font-family: 'Montserrat', sans-serif;
+
+}
+.eventpic:hover .overlay {
+opacity: .8;
+
+}
+
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.home {
+  width: 100%;
+  margin: auto;
+}
 /*.continue {
   padding-left: 80px;
 }*/

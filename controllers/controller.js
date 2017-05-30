@@ -61,7 +61,7 @@ router.post('/new-event', function(req, res) {
         db.Event.create({
             title: req.body.title,
             location: req.body.location,
-            date: req.body.location,
+            date: req.body.date,
             time: req.body.time,
             picture: req.body.picture,
             attendance_cap: parseInt(req.body.attendance_cap),
