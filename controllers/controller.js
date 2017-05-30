@@ -239,20 +239,20 @@ router.put("/my-account", function(req, res) {
     })
 })
 
-router.get('/my-business', function(req, res) {
-    if (req.isAuthenticated()) {
-        console.log("data", req.user)
-        if (req.user.phonenumber) {
-            db.Business.findOne({
-                where: {
-                    id: req.user.id
-                }
-            }).then(function(data) {
-                res.render("my-business", data.dataValues);
-            })
-        }
-    }
-});
+// router.get('/my-business', function(req, res) {
+//     if (req.isAuthenticated()) {
+//         console.log("data", req.user)
+//         if (req.user.phonenumber) {
+//             db.Business.findOne({
+//                 where: {
+//                     id: req.user.id
+//                 }
+//             }).then(function(data) {
+//                 res.render("my-business", data.dataValues);
+//             })
+//         }
+//     }
+// });
 
 router.put("/my-business", function(req, res) {
 
@@ -389,10 +389,10 @@ router.get('/view-event/:id', function(req, res) {
         }
     }).then(function(data) {
         console.log(data);
-        var hbsObject = {
-            event: data
-        }
-        res.render("view-event", hbsObject);
+        // var hbsObject = {
+        //     event: data
+        // }
+        res.render("view-event", data.dataValues);
     });
 });
 
@@ -435,7 +435,7 @@ router.post("/event-sign-up/:id", function(req, res) {
                     totalUsers: current
                 }, {
                     where: {
-                        id: req.user.id
+                        id: req.params.id
                     }
                 }).then(function(data3) {
                     res.redirect("/user");
