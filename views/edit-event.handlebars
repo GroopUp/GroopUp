@@ -5,74 +5,60 @@
 <div class="row">
     <div class ="col-lg-12 update-event">
       <table class="biz-event-update">
+        <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
+          <div class="form-group">
         <tr>
           <td>
-            title: {{this.title}}
+            title:
           </td>
           <td>
-            <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
-              <div class="form-group">
-                <input type="text" id="auth" name="name" value="{{this.title}}">
-                <button type="submit" class="btn btn-primary">update title</button>
-                </div>
-              </form>
+                <input type="text" id="auth" name="title" value="{{this.title}}">
           </td>
         </tr>
         <tr>
           <td>
-            location: {{this.location}}
+            location:
           </td>
           <td>
-            <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
-              <div class="form-group">
-                <input type="text" id="auth" name="name" value="{{this.location}}">
-                <button type="submit" class="btn btn-primary">update location</button>
-                </div>
-              </form>
+                <input type="text" id="auth" name="location" value="{{this.location}}">
           </td>
         </tr>
         <tr>
           <td>
-            date: {{this.date}}
+            date:
           </td>
           <td>
-            <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
-              <div class="form-group">
-                <input type="text" id="auth" name="name" value="{{this.date}}">
-                <button type="submit" class="btn btn-primary">update date</button>
-                </div>
-              </form>
+                <input type="text" id="auth" name="date" value="{{this.date}}">
           </td>
         </tr>
         <tr>
           <td>
-            time: {{this.time}}
+            time:
           </td>
           <td>
-            <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
-              <div class="form-group">
-                <input type="text" id="auth" name="name" value="{{this.time}}">
-                <button type="submit" class="btn btn-primary">update time</button>
-                </div>
-              </form>
+                <input type="text" id="auth" name="time" value="{{this.time}}">
           </td>
         </tr>
         <tr>
           <td>
-            picture: {{this.picture}}
+            picture:
           </td>
           <td>
-            <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
-              <div class="form-group">
-                <input type="text" id="auth" name="name" value="{{this.picture}}">
-                <button type="submit" class="btn btn-primary">update picture</button>
-                </div>
-              </form>
+                <input type="text" id="auth" name="picture" value="{{this.picture}}">
           </td>
         </tr>
+        <tr>
+          <td colspan="2">
+            <center>
+              <button type="submit" class="btn btn-primary" id="submit">create account</button>
+            </center>
+          </td>
+        </tr>
+      </form>
       </table>
      </div>
    </div>
+ </div>
  </div>
  <div class="container footer">
  </div>
