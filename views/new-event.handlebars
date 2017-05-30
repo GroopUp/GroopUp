@@ -1,4 +1,24 @@
 <div class="jumbotron">
+  <div class="biz-tabs">
+    <ul id="tabs">
+      <li>
+        <form class="create-update-form" action="/business" method="GET">
+          <button type="submit" class="btn btn-primary user-settings">home</button>
+        </form>
+      </li>
+      <li>
+        <form class="create-update-form" action="/my-business" method="GET">
+          <button type="submit" class="btn btn-primary user-settings">my account</button>
+        </form>
+
+      </li>
+      <li>
+        <form class="create-update-form" action="/logout" method="GET">
+          <button type="submit" class="btn btn-primary logout">log out</button>
+        </form>
+      </li>
+    </ul>
+        </div>
   <form class= "home" action="/business" method="GET"><center><button><h1>GroopUp</h1></button></center></form>
   <h3><center>create an event</center></h3>
 </div>
@@ -16,7 +36,7 @@
             title:
           </td>
           <td>
-            <input type="text" id="title" name="title">
+            <input type="text" id="title" name="title" required>
           </td>
         </tr>
         <tr>
@@ -24,7 +44,7 @@
             location:
           </td>
           <td>
-            <input type="text" id="local" name="location"><br>
+            <input type="text" id="local" name="location" required><br>
           </td>
         </tr>
         <tr>
@@ -32,7 +52,7 @@
             date:
           </td>
           <td>
-          <input placeholder="MM/DD/YYYY" type="text" id="time" name="date"><br>
+          <input placeholder="MM/DD/YYYY" type="text" id="time" name="date" pattern="\d{1,2}/\d{1,2}/\d{4}" required><br>
           </td>
         </tr>
         <tr>
@@ -40,7 +60,7 @@
             time:
           </td>
           <td>
-          <input type="text" id="time" name="time"><br>
+          <input placeholder="HH:mmAM" type="text" id="time" name="time" required><br>
           </td>
         </tr>
         <tr>
@@ -48,7 +68,7 @@
             add photo:
           </td>
           <td>
-            <input type="text" id="picture" name="picture"><br>
+            <input type="url" id="picture" name="picture" required><br>
           </td>
         </tr>
       <tr>
@@ -56,13 +76,14 @@
           set attendance cap:
         </td>
         <td>
-          <input type="text" id="att" name="attendance_cap"><br>
+          <input type="number" size="6" name="attendance_cap" min="2" max="500" value="0" required><br/>
+
         </td>
       </tr>
       <tr>
         <td colspan="2">
           <center>
-          <button type="submit" class="btn btn-primary" id="submit">create event</button>  
+          <button type="submit" class="btn btn-primary" id="submit">create event</button>
           </center>
         </td>
       </tr>
