@@ -1,21 +1,12 @@
 <div class="jumbotron">
-  <div class="logins-user">
+  <div class="biz-tabs">
     <ul id ="tabs-user">
       <li>
-    <form class="create-update-form" action="/my-account/" method="GET">
+    <form class="create-update-form" action="/my-account" method="GET">
 <button type="submit" class="btn btn-primary user-settings">my account</button>
 </form>
 </li>
     <li>
-    <form class="create-update-form" action="/logout" method="GET">
-      <button type="submit" class="btn btn-primary logout">log out</button>
-</form>
-</li>
-</ul>
-</div>
-  <div class="logins-user">
-    <ul id ="tabs-user">
-      <li>
     <form class="create-update-form" action="/user" method="GET">
 <button type="submit" class="btn btn-primary user-settings">home</button>
 </form>
@@ -111,6 +102,7 @@ Age: <input type="number" size="6" name="age" min="18" max="99" value="0" requir
         {{#each event}}
       <li>
       <ul id="eventinfo">
+        <li>
                   {{title}}
                   </li>
                     <li>
@@ -134,5 +126,8 @@ Age: <input type="number" size="6" name="age" min="18" max="99" value="0" requir
     </ul>
   </div>
 </div>
-  <div class="container footer">
-  </div>
+</div>
+<div class="container footer">
+  <center>
+    <a href="mailto:contact@groopup.com" target="_top"><font color="white">contact@groopup.com</font></a>
+</div>

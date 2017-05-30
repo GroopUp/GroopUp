@@ -20,12 +20,16 @@
     </ul>
         </div>
   <form class= "home" action="/business" method="GET"><center><button><h1>GroopUp</h1></button></center></form>
-  <h3><center>my account</center></h3>
+  <center>
+    <h3>my account</h3>
+  </center>
 </div>
 <div class="container">
-  <div class="row">
+  <div class="row mybusiness">
     <div class="col-lg-6 update-biz">
-      <h3>My Info</h3>
+      <center>
+        <h3>My Info</h3>
+      </center>
       <table class="biz-info-update">
 
         <form class="create-update-form" action="/my-business?_method=PUT" method="POST">
@@ -77,22 +81,27 @@
             <center>
               <button type="submit" class="btn btn-primary" id="submit">update account</button>
             </center>
-
+            </div>
+          </form>
           </td>
         </tr>
       </table>
-      </div>
     </div>
     <div class="col-lg-6 myevents">
-      <h3>My Events</h3>
+      <center>
+        <h3>My Events</h3></center>
+        <center>
+
       <ul id="eventlist">
           {{#each this.Events}}
         <li>
         <ul id="eventinfo">
-                    <h3>{{this.title}}</h3>
+                    <center>
+                      {{this.title}}
+                    </center>
                     </li>
                       <li>
-                        <img height="200px" width="280" src="{{picture}}"/>
+                        <img height="100px" width="180" src="{{picture}}"/>
                       </li>
                       <li>
                         {{lthis.location}}
@@ -106,12 +115,15 @@
                         </form>
                       </li>
                     </ul>
-                  </center>
+
                 </li>
           {{/each}}
       </ul>
+      </center>
     </div>
   </div>
 </div>
   <div class="container footer">
+    <center>
+      <a href="mailto:contact@groopup.com" target="_top"><font color="white">contact@groopup.com</font></a>
   </div>
