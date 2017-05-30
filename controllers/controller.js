@@ -288,6 +288,7 @@ router.put("/my-business", function(req, res) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+// stock index
 router.get('/', function(req, res) {
     if (!req.isAuthenticated()) {
         db.Event.findAll({
@@ -305,6 +306,35 @@ router.get('/', function(req, res) {
     }
 });
 
+// index for user
+router.get('/index-user', function(req, res) {
+    db.Event.findAll({
+        order: [
+            ['createdAt', 'DESC']
+        ]
+    }).then(function(data) {
+        var hbsObject = {
+            event: data
+        }
+        res.render('index-user', hbsObject);
+    });
+});
+
+// index for business
+router.get('/index-business', function(req, res) {
+    db.Event.findAll({
+        order: [
+            ['createdAt', 'DESC']
+        ]
+    }).then(function(data) {
+        var hbsObject = {
+            event: data
+        }
+        res.render('index-business', hbsObject);
+    });
+});
+
+// stock view event
 router.get('/view-event/:id', function(req, res) {
 
     db.Event.findOne({
@@ -328,6 +358,9 @@ router.get("/quiz", function(req, res) {
     res.render("quiz")
 })
 
+// // view event for users, to unregister
+// router.delete('/view-event/unregister/:id', function(req, res) {
+//     db.Signup.destroy({
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // router.get('/user-login', function(req, res) {
@@ -339,10 +372,19 @@ router.get("/quiz", function(req, res) {
 //     db.
 // });
 
-// // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// router.post('/quiz', function(req, res) {
-//     db.
-// });
+router.post('/quiz', function(req, res) {
+    console.log("RECEIVED ON BACK-END");
+    console.log(req.body.result);
+    db.User.update({
+        uquizresults: req.body.result
+    }, {
+        where: {
+            id: req.user.id
+        }
+    }).then(function(data) {
+        res.redirect('/');
+    });
+});
 
 
 // TEST
