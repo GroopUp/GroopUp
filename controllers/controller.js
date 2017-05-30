@@ -68,6 +68,7 @@ router.post('/new-event', function(req, res) {
             time: req.body.time,
             picture: req.body.picture,
             attendance_cap: parseInt(req.body.attendance_cap),
+            totalUsers: 0,
             BusinessId: req.user.id
         }).then(function(data) {
             res.redirect("/business");
@@ -81,26 +82,26 @@ router.get('/business', function(req, res) {
     //protecting business route
     if (req.isAuthenticated()) {
         if (req.user.phonenumber) {
-        db.Event.findAll({
-            order: [
-                ['date'],
-                ['time']
-            ]
-        }).then(function(data) {
-        var gooddate = [];
+            db.Event.findAll({
+                order: [
+                    ['date'],
+                    ['time']
+                ]
+            }).then(function(data) {
+                var gooddate = [];
 
-        for( var i = 0; i < data.length; i++){
-            if(moment().isBefore(data[i].date)){
-                gooddate.push(data[i]);
-                console.log(gooddate);
-            }
-        }
-            var hbsObject = {
-                event: gooddate
-            }
-            console.log(data);
-            res.render('index-business', hbsObject);
-        });
+                for (var i = 0; i < data.length; i++) {
+                    if (moment().isBefore(data[i].date)) {
+                        gooddate.push(data[i]);
+                        console.log(gooddate);
+                    }
+                }
+                var hbsObject = {
+                    event: gooddate
+                }
+                console.log(data);
+                res.render('index-business', hbsObject);
+            });
         } else {
             res.redirect("/user")
         }
@@ -119,14 +120,14 @@ router.get('/user', function(req, res) {
                     ['time']
                 ]
             }).then(function(data) {
-        var gooddate = [];
+                var gooddate = [];
 
-        for( var i = 0; i < data.length; i++){
-            if(moment().isBefore(data[i].date)){
-                gooddate.push(data[i]);
-                console.log(gooddate);
-            }
-        }
+                for (var i = 0; i < data.length; i++) {
+                    if (moment().isBefore(data[i].date)) {
+                        gooddate.push(data[i]);
+                        console.log(gooddate);
+                    }
+                }
                 var hbsObject = {
                     event: gooddate
                 }
@@ -167,7 +168,7 @@ router.put("/my-account", function(req, res) {
             //this will check if the user has put the new password in.
             if (user.password === req.body.password) {
                 var userPassword = req.body.password;
-                
+
             } else {
                 //if user has put the new password, it has to be hashed again.
                 var userPassword = generateHash(req.body.password);
@@ -238,7 +239,7 @@ router.get('/my-business', function(req, res) {
 });
 
 router.put("/my-business", function(req, res) {
-    
+
     var generateHash = function(password) {
         return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
     };
@@ -249,7 +250,7 @@ router.put("/my-business", function(req, res) {
             //this will check if the business has put the new password in.
             if (business.password === req.body.password) {
                 var businessPassword = req.body.password;
-                
+
             } else {
                 //if business has put the new password, it has to be hashed again.
                 var businessPassword = generateHash(req.body.password);
@@ -311,25 +312,25 @@ router.put("/my-business", function(req, res) {
 // stock index
 router.get('/', function(req, res) {
     if (!req.isAuthenticated()) {
-    db.Event.findAll({
-        order: [
-            ['date'],
-            ['time']
-        ]
-    }).then(function(data) {
-        var gooddate = [];
+        db.Event.findAll({
+            order: [
+                ['date'],
+                ['time']
+            ]
+        }).then(function(data) {
+            var gooddate = [];
 
-        for( var i = 0; i < data.length; i++){
-            if(moment().isBefore(data[i].date)){
-                gooddate.push(data[i]);
-                console.log(gooddate);
+            for (var i = 0; i < data.length; i++) {
+                if (moment().isBefore(data[i].date)) {
+                    gooddate.push(data[i]);
+                    console.log(gooddate);
+                }
             }
-        }
-        var hbsObject = {
-            event: gooddate
-        }
-        res.render('index', hbsObject);
-    });
+            var hbsObject = {
+                event: gooddate
+            }
+            res.render('index', hbsObject);
+        });
     } else {
         res.redirect("/user")
     }
@@ -387,9 +388,48 @@ router.get("/quiz", function(req, res) {
     res.render("quiz")
 })
 
-// // view event for users, to unregister
-// router.delete('/view-event/unregister/:id', function(req, res) {
-//     db.Signup.destroy({
+router.get("/user-view-event/:id", function(req, res) {
+    console.log(req.user)
+    db.Event.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then(function(data) {
+
+        res.render("user-view-event", data.dataValues);
+    });
+})
+
+router.post("/event-sign-up/:id", function(req, res) {
+
+
+
+        db.Signup.create({
+            EventId: req.params.id,
+            UserId: req.user.id
+        }).then(function(data1) {
+            db.Event.findOne({
+                where: {
+                    id: req.params.id
+                }
+            }).then(function(data2) {
+                var current = data2.totalUsers
+                current = current + 1
+                db.Event.update({
+                    totalUsers: current
+                }, {
+                    where: {
+                        id: req.user.id
+                    }
+                }).then(function(data3) {
+                    res.redirect("/user");
+                })
+            })
+        })
+    })
+    // // view event for users, to unregister
+    // router.delete('/view-event/unregister/:id', function(req, res) {
+    //     db.Signup.destroy({
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // router.get('/user-login', function(req, res) {
@@ -404,15 +444,19 @@ router.get("/quiz", function(req, res) {
 router.post('/quizdone', function(req, res) {
     console.log("RECEIVED ON BACK-END");
     console.log(req.body.result);
+    // res.redirect('/')
+    setTimeout(function() { console.log("what") }, 2000);
+
     db.User.update({
         uquizresults: req.body.result
     }, {
         where: {
             id: req.user.id
         }
-    }).then(function(data) {
-        res.redirect('/user');
-    });
+    })
+
+
+
 });
 
 

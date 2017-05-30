@@ -1,5 +1,5 @@
 // Capture the form inputs 
-$("#submit").on("click", function() {
+$("#quiz").on("click", function() {
     // // Form validation
     // function validateForm() {
     //     var isValid = true;
@@ -35,6 +35,7 @@ $("#submit").on("click", function() {
     // AJAX post the data to the friends API. 
     $.post(currentURL + "/quizdone", {"result":JSON.stringify(scores)}, function(data) {
         console.log(scores);
+        window.location="/user"
     });
     // } else {
     //     alert("Please fill out all fields before submitting!");

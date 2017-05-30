@@ -36,6 +36,12 @@ module.exports = function(sequelize, Datatypes) {
                 isInt: true
             }
         }, // end of age
+        totalUsers: {
+            type: Datatypes.INTEGER,
+            validate: {
+                isInt: true
+            }
+        },
         picture: {
             type: Datatypes.TEXT,
             allowNull: false,

@@ -8,7 +8,7 @@ module.exports = function(passport, user) {
     //Serialize Sessions
     //This will create cookies and stored them in the session
     passport.serializeUser(function(user, done) {
-        // console.log("serial",user)
+        console.log("SERIALZING!!!!!",user)
         //saving user's unique colume to verify the type of table when desealize
         var key = {
             id: user.id,
@@ -21,16 +21,17 @@ module.exports = function(passport, user) {
     //This sill read cookies. will look up & return users object
     //req.user will return user data
     passport.deserializeUser(function(key, done) {
-    	console.log("desealize")
+    	console.log("DESERIALIZING!!!!");
         //check the type of table
         if (key.type) {
-
+            console.log("USER ACCOUNT LOGGED IN");
             db.User.findOne({ where: { id: key.id } }).then(function(user) {
                 done(null, user);
             }).error(function(err) {
                 done(err, null);
             });
         } else {
+            console.log("BUSINESS ACCOUNT LOGGED IN");
             db.Business.findOne({ where: { id: key.id } }).then(function(user) {
                 done(null, user);
             }).error(function(err) {
