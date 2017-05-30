@@ -4,6 +4,7 @@ var router = express.Router();
 var authController = require('./authcontroller.js');
 var passport = require("passport");
 var bCrypt = require("bcrypt-nodejs");
+var moment = require('moment');
 
 
 //user authentication
@@ -63,7 +64,7 @@ router.post('/new-event', function(req, res) {
         db.Event.create({
             title: req.body.title,
             location: req.body.location,
-            date: req.body.date,
+            date: moment(req.body.date).format('MM-DD-YYYY'),
             time: req.body.time,
             picture: req.body.picture,
             attendance_cap: parseInt(req.body.attendance_cap),
@@ -80,16 +81,26 @@ router.get('/business', function(req, res) {
     //protecting business route
     if (req.isAuthenticated()) {
         if (req.user.phonenumber) {
-            db.Event.findAll({
-                order: [
-                    ['createdAt', 'DESC']
-                ]
-            }).then(function(data) {
-                var hbsObject = {
-                    event: data
-                }
-                res.render('index-business', hbsObject);
-            });
+        db.Event.findAll({
+            order: [
+                ['date'],
+                ['time']
+            ]
+        }).then(function(data) {
+        var gooddate = [];
+
+        for( var i = 0; i < data.length; i++){
+            if(moment().isBefore(data[i].date)){
+                gooddate.push(data[i]);
+                console.log(gooddate);
+            }
+        }
+            var hbsObject = {
+                event: gooddate
+            }
+            console.log(data);
+            res.render('index-business', hbsObject);
+        });
         } else {
             res.redirect("/user")
         }
@@ -104,11 +115,20 @@ router.get('/user', function(req, res) {
         if (req.user.age) {
             db.Event.findAll({
                 order: [
-                    ['createdAt', 'DESC']
+                    ['date'],
+                    ['time']
                 ]
             }).then(function(data) {
+        var gooddate = [];
+
+        for( var i = 0; i < data.length; i++){
+            if(moment().isBefore(data[i].date)){
+                gooddate.push(data[i]);
+                console.log(gooddate);
+            }
+        }
                 var hbsObject = {
-                    event: data
+                    event: gooddate
                 }
                 res.render('index-user', hbsObject);
             });
@@ -291,16 +311,25 @@ router.put("/my-business", function(req, res) {
 // stock index
 router.get('/', function(req, res) {
     if (!req.isAuthenticated()) {
-        db.Event.findAll({
-            order: [
-                ['createdAt', 'DESC']
-            ]
-        }).then(function(data) {
-            var hbsObject = {
-                event: data
+    db.Event.findAll({
+        order: [
+            ['date'],
+            ['time']
+        ]
+    }).then(function(data) {
+        var gooddate = [];
+
+        for( var i = 0; i < data.length; i++){
+            if(moment().isBefore(data[i].date)){
+                gooddate.push(data[i]);
+                console.log(gooddate);
             }
-            res.render('index', hbsObject);
-        });
+        }
+        var hbsObject = {
+            event: gooddate
+        }
+        res.render('index', hbsObject);
+    });
     } else {
         res.redirect("/user")
     }
