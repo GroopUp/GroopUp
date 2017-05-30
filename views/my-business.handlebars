@@ -4,7 +4,7 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-lg-12 update-biz">
+    <div class="col-lg-6 update-biz">
       <table class="biz-info-update">
 
         <form class="create-update-form" action="/my-business?_method=PUT" method="POST">
@@ -36,7 +36,8 @@
         </tr>
         <tr>
           <td>
-            phonenumber:
+
+            phone number:
           </td>
           <td>
               <input type="phonenumber" id="phonenumber" name="phonenumber" value="{{this.phonenumber}}">
@@ -53,12 +54,42 @@
         <tr>
           <td colspan="2">
             <center>
-              <button type="submit" class="btn btn-primary" id="submit">create account</button>
+              <button type="submit" class="btn btn-primary" id="submit">update account</button>
             </center>
+
           </td>
         </tr>
       </table>
       </div>
+    </div>
+    <div class="col-lg-6 myevents">
+      <ul id="eventlist">
+          {{#each event}}
+        <li>
+
+        <ul id="eventinfo">
+                  <center>
+                    <h3>{{title}}</h3>
+                    </li>
+                      <li>
+                        <img height="200px" width="280" src="{{picture}}"/>
+                      </li>
+                      <li>
+                        {{location}}
+                      </li>
+                      <li>
+                        {{date}}
+                      </li>
+                      <li>
+                        <form action="/{{this.id}}?_method=GET" method="GET">
+                          <button type="submit" class="btn btn-primary">view event</button>
+                        </form>
+                      </li>
+                    </ul>
+                  </center>
+                </li>
+          {{/each}}
+      </ul>
     </div>
   </div>
 </div>
