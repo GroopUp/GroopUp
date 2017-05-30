@@ -19,7 +19,7 @@
                                     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#home" role="tab">User</a></li>
                                     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu1" role="tab">Business</a></li>
                                   </ul>
-                                  
+
                                   <div class="tab-content">
                                     <div id="home" class="tab-pane fade in active" role="tabpanel">
                                       <form class="create-update-form" action="/signin" method="POST">
@@ -31,7 +31,7 @@
                                           <center>
                                             <div class="form-group">
                                             <label for="user-password">password:</label>
-                                            <input type="text" id="pw" name="user-password"><br>
+                                            <input type="password" id="pw" name="user-password"><br>
                                           </div>
 
                                         <button type="submit" class="btn btn-primary">user</button>
@@ -48,9 +48,9 @@
                                               <center>
                                                 <div class="form-group">
                                                 <label for="user-password">password:</label>
-                                                <input type="text" id="pw" name="password"><br>
+                                                <input type="password" id="pw" name="password"><br>
                                               </div>
-                                      
+
                                         <button type="submit" class="btn btn-primary">business</button>
                                       </form>
                                     </div>
@@ -62,8 +62,8 @@
                           </div>
 
 
-                          
-                        
+
+
                         </div>
                       </div>
                     </div>
@@ -104,7 +104,7 @@
                     </div>
                   </div>
                   </div>
-      <h1><center>GroopUp</center></h1>
+                  <form class= "home" action="/" method="GET"><center><button><h1>GroopUp</h1></button></center></form>
     </div>
 
     <div class="container">
@@ -119,20 +119,33 @@
       <div class="row">
             <div class ="col-lg-12 events">
             <!-- handlebars generates a list of all events in DB with the name, location, date/time and a button to view the event's page  -->
-                <ul style="list-style:none">
-                    {{#each event}}
-                            <center><li>
-                                {{title}}
-                                {{location}}
-                                {{date}}
-                                <img height="200px" src="{{picture}}"/>
-                                <form action="/{{this.id}}?_method=GET" method="GET">
-                                    <!-- <input type="hidden" name="devoured" value="false"> -->
-                                    <button type="view">view event</button>
-                                </form>
-                            </center></li>
-                    {{/each}}
-                </ul>
+            <ul id="eventlist">
+                {{#each event}}
+              <li>
+
+              <ul id="eventinfo">
+                        <center>
+                          <h3>{{title}}</h3>
+                          </li>
+                            <li>
+                              <img height="200px" width="280" src="{{picture}}"/>
+                            </li>
+                            <li>
+                              {{location}}
+                            </li>
+                            <li>
+                              {{date}}
+                            </li>
+                            <li>
+                              <form action="/{{this.id}}?_method=GET" method="GET">
+                                <button type="submit" class="btn btn-primary user-settings">view event</button>
+                              </form>
+                            </li>
+                          </ul>
+                        </center>
+                      </li>
+                {{/each}}
+            </ul>
             </div>
         </div>
     </div>

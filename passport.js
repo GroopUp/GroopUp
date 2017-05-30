@@ -21,6 +21,7 @@ module.exports = function(passport, user) {
     //This sill read cookies. will look up & return users object
     //req.user will return user data
     passport.deserializeUser(function(key, done) {
+    	console.log("desealize")
         //check the type of table
         if (key.type) {
 

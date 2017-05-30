@@ -1,12 +1,12 @@
 <div class="jumbotron">
-  <h1><center>GroopUp</center></h1>
+  <form class= "home" action="/user" method="GET"><center><button><h1>GroopUp</h1></button></center></form>
   <h3><center>my account</center></h3>
 </div>
 <div class="container">
   <div class="row">
     <div class="col-lg-12 update-info">
       <table class="update-account">
-        <form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">
+        <form class="create-update-form" action="/my-account?_method=PUT" method="POST">
           <div class="form-group">
         <tr>
           <td>
@@ -45,9 +45,17 @@
             sex:
           </td>
           <td>
-            <input type="radio" name="sex" value="0"> male<br>
+            {{#if this.sex}}
+            <input type="radio" name="sex" value="0" checked> male<br>
             <input type="radio" name="sex" value="1"> female<br>
-            <input type="radio" name="sex" value="">other<br>
+            <input type="radio" name="sex" value=""> other<br>
+            
+            {{else}}
+            <input type="radio" name="sex" value="0"> male<br>
+            <input type="radio" name="sex" value="1" checked  > female<br>
+            <input type="radio" name="sex" value=""> other<br>
+            {{/if}}
+
           </td>
         </tr>
         <tr>

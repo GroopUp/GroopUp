@@ -10,6 +10,8 @@ module.exports = function(sequelize, Datatypes) {
                 len: [1]
             } // end of validate
         }, // end of firstname
+
+
         password: {
             type: Datatypes.STRING,
             allowNull: false,
@@ -82,4 +84,3 @@ module.exports = function(sequelize, Datatypes) {
     });
     return User;
 }
-    
