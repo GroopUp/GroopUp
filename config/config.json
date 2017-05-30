@@ -1,9 +1,7 @@
 {
   "development": {
     "username": "root",
-
-
-    "password": "pass",
+    "password": "alison",
     "database": "groopup",
 
     "host": "127.0.0.1",

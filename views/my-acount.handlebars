@@ -22,11 +22,9 @@
   <h3><center>my account</center></h3>
 </div>
 <div class="container">
-  <div class="row myaccount">
+  <div class="row">
     <div class="col-lg-6 update-info">
-      <center>
-<h3>My Info</h3></center>
-      <center>
+      <h3>My Info</h3>
       <table class="update-account">
         <form class="create-update-form" action="/my-account?_method=PUT" method="POST">
           <div class="form-group">
@@ -56,7 +54,7 @@
         </tr>
         <tr>
           <td>
-            photo: <br><img height="100px" src={{this.picture}}/>
+            photo: <img height="100px" src={{this.picture}}/>
           </td>
           <td>
               <input type="url" id="email" name="picture" value="{{this.picture}}" required>
@@ -68,11 +66,13 @@
           </td>
           <td>
             {{#if this.sex}}
-            <input type="radio" name="sex" value="0"> male<br>
-            <input type="radio" name="sex" value="1" checked> female<br>
-            {{else}}
             <input type="radio" name="sex" value="0" checked> male<br>
-            <input type="radio" name="sex" value="1"   > female<br>
+            <input type="radio" name="sex" value="1"> female<br>
+            <input type="radio" name="sex" value=""> other<br>
+            {{else}}
+            <input type="radio" name="sex" value="0"> male<br>
+            <input type="radio" name="sex" value="1" checked  > female<br>
+            <input type="radio" name="sex" value=""> other<br>
             {{/if}}
           </td>
         </tr>
@@ -81,7 +81,7 @@
             age:
           </td>
           <td>
-Age: <input type="number" size="6" name="age" min="18" max="99" value="{{this.age}}" required>          </td>
+Age: <input type="number" size="6" name="age" min="18" max="99" value="0" required>          </td>
         </tr>
         <tr>
           <td colspan="2">
@@ -90,16 +90,13 @@ Age: <input type="number" size="6" name="age" min="18" max="99" value="{{this.ag
             </center>
           </td>
         </tr>
-      </table>
-    </center>
       </form>
+      </table>
       </div>
     </div>
-    <div class="col-lg-6 myevents">
+    <div class="col-lg-6 my-events">
     <ul id="eventlist">
-      <h3><center>
-        My events
-      </center></h3>
+      <h3>My events</h3>
         {{#each event}}
       <li>
       <ul id="eventinfo">

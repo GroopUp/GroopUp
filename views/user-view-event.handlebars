@@ -2,17 +2,20 @@
 <h1><center>GroopUp</center></h1>
 </div>
 <div class="container">
-<div class="row">
-    <div class ="col-lg-12 event">
-      <h1>{{this.title}}</h1>
-      <h3>{{this.location}}</h3>
-      <h3>{{this.date}}</h3>
-      <h3>{{this.time}}</h3>
-      <h3>{{this.attendance_cap}}</h3>
-      <h3>{{this.picture}}</h3>
+<div class="row view-event">
+    <div class ="col-lg-6 event">
+      <h2>{{this.title}}</h2>
+      <h4>{{this.location}}</h4>
+      <h4>{{this.date}}</h4>
+      <h4>{{this.time}}</h4>
+      <h4>max attendance: {{this.attendance_cap}}</h4>
       <form action="/event-sign-up/{{this.id}}" method="POST">
-        <button type="submit">join this event</button>
+        <button type="submit" class="btn btn-primary">join this event</button>
       </form>
+    </div>
+      <div class ="col-lg-6 pic">
+      <img height="300px"  src="{{picture}}"/>
+
 
 
      </div>
