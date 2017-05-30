@@ -4,7 +4,8 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-lg-12 update-info">
+    <div class="col-lg-6 update-info">
+      <h3>My Info</h3>
       <table class="update-account">
         <form class="create-update-form" action="/my-account?_method=PUT" method="POST">
           <div class="form-group">
@@ -49,7 +50,7 @@
             <input type="radio" name="sex" value="0" checked> male<br>
             <input type="radio" name="sex" value="1"> female<br>
             <input type="radio" name="sex" value=""> other<br>
-            
+
             {{else}}
             <input type="radio" name="sex" value="0"> male<br>
             <input type="radio" name="sex" value="1" checked  > female<br>
@@ -69,7 +70,7 @@
         <tr>
           <td colspan="2">
             <center>
-              <button type="submit" class="btn btn-primary" id="submit">create account</button>
+              <button type="submit" class="btn btn-primary" id="submit">update account</button>
             </center>
           </td>
         </tr>
@@ -77,6 +78,34 @@
       </table>
       </div>
     </div>
+    <div class="col-lg-6 my-events">
+    <ul id="eventlist">
+      <h3>My events</h3>
+        {{#each event}}
+      <li>
+      <ul id="eventinfo">
+                  {{title}}
+                  </li>
+                    <li>
+                      <img height="200px" width="280" src="{{picture}}"/>
+                    </li>
+                    <li>
+                      {{location}}
+                    </li>
+                    <li>
+                      {{date}}
+                    </li>
+                    <li>
+                      <form action="/{{this.id}}?_method=GET" method="GET">
+                        <button type="submit" class="btn btn-primary">view event</button>
+                      </form>
+                    </li>
+                  </ul>
+                </center>
+              </li>
+        {{/each}}
+    </ul>
   </div>
+</div>
   <div class="container footer">
   </div>
