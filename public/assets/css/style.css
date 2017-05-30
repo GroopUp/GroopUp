@@ -12,6 +12,7 @@ body {
 
 }
 
+
 .jumbotron {
   background: linear-gradient(to bottom, #41f4f1 , #42a1f4 );
   /*background-color: rgba(25, 14, 233, 0);*/
@@ -83,7 +84,9 @@ button {
 }
 
 .quiz {
-  height: 900px;
+  height: 700px;
+  width: 500px;
+  margin: auto;
 }
 .update-biz {
   width: 250px;
