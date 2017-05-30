@@ -166,7 +166,7 @@ router.get("/my-account", function(req, res) {
                     id: req.user.id
                 }
             }).then(function(data) {
-                res.render("my-acount", data.dataValues);
+                res.render("my-account", data.dataValues);
             })
         }
     }
@@ -418,7 +418,48 @@ router.get("/user-view-event/:id", function(req, res) {
 
 router.post("/event-sign-up/:id", function(req, res) {
 
+        db.Event.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(data1) {
+            if (data1.equizresults.length === 0) {
+                db.User.findOne({
+                    where: {
+                        id: req.user.id
+                    }
+                }).then(function(data2) {
+                    db.Event.update({
+                        equizresults: data2.uquizresults
+                    }, {
+                        where: {
+                            id: data1.id
+                        }
+                    });
+                });
+            } else {
+                db.User.findOne({
+                    where: {
+                        id: req.user.id
+                    }
+                }).then(function(data3) {
+                    averageArray = [];
+                    for (var i = 0, n = JSON.parse(data3.uquizresults).length; i < n; i++) {
+                        averageElement = (parseFloat(JSON.parse(data3.uquizresults)[i]) + parseFloat(JSON.parse(data1.equizresults)[i])) / 2.0;
+                        averageArray.push(averageElement);
+                    }
+                    db.Event.update({
+                        equizresults: JSON.stringify(averageArray)
+                    }, {
+                        where: {
+                            id: data1.id
+                        }
+                    }).then(function(data4) {
 
+                    });
+                });
+            }
+        });
 
         db.Signup.create({
             EventId: req.params.id,
@@ -469,6 +510,8 @@ router.post('/quizdone', function(req, res) {
         where: {
             id: req.user.id
         }
+    }).then(function(data){
+        res.redirect('/user');
     })
 
 
