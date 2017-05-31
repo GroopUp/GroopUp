@@ -356,7 +356,8 @@ router.get('/', function(req, res) {
 router.get('/index-user', function(req, res) {
     db.Event.findAll({
         order: [
-            ['createdAt', 'DESC']
+            ['date'],
+            ['time']
         ]
     }).then(function(data) {
         var hbsObject = {
@@ -370,7 +371,8 @@ router.get('/index-user', function(req, res) {
 router.get('/index-business', function(req, res) {
     db.Event.findAll({
         order: [
-            ['createdAt', 'DESC']
+            ['date'],
+            ['time']
         ]
     }).then(function(data) {
         var hbsObject = {
@@ -416,111 +418,130 @@ router.get("/user-view-event/:id", function(req, res) {
 
 router.post("/event-sign-up/:id", function(req, res) {
 
-        db.Event.findOne({
-            where: {
-                id: req.params.id
-            }
-        }).then(function(data1) {
-            if (data1.equizresults === null) {
-                db.User.findOne({
-                    where: {
-                        id: req.user.id
-                    }
-                }).then(function(data2) {
-                    db.Event.update({
-                        equizresults: data2.uquizresults
-                    }, {
-                        where: {
-                            id: req.params.id
-                        }
-                    });
-                });
-            } else {
-                db.User.findOne({
-                    where: {
-                        id: req.user.id
-                    }
-                }).then(function(data3) {
-                    averageArray = [];
-                    for (var i = 0, n = JSON.parse(data3.uquizresults).length; i < n; i++) {
-                        averageElement = (parseFloat(JSON.parse(data3.uquizresults)[i]) + parseFloat(JSON.parse(data1.equizresults)[i])) / 2.0;
-                        averageArray.push(JSON.stringify(averageElement));
-                    }
-                    db.Event.update({
-                        equizresults: JSON.stringify(averageArray)
-                    }, {
-                        where: {
-                            id: req.params.id
-                        }
-                    }).then(function(data4) {
-                        console.log('CHECK WORKBENCH FOR CHANGES');
-                    });
-                });
-            }
-        });
-
-
-
         db.Signup.findAll({
             where: {
                 UserId: req.user.id,
                 EventId: req.params.id
             }
         }).then(function(result) {
-
-            if (result[0]) {
-                db.Event.findAll({
-                    order: [
-                        ['createdAt', 'DESC']
-                    ]
-                }).then(function(data4) {
-                    var hbsObject = {
-                        event: data4,
-                        error: "You are already signed up for this event"
-                    }
-                    res.render('index-user', hbsObject);
-                });
-            } else {
-                db.Signup.create({
-                    EventId: req.params.id,
-                    UserId: req.user.id
-                }).then(function(data1) {
-                    db.Event.findOne({
-                        where: {
-                            id: req.params.id
+            db.Event.findOne({
+                where: {
+                    id: req.params.id
+                }
+            }).then(function(result1) {
+                if (result1.leftSpot == 0) {
+                    db.Event.findAll({
+                        order: [
+                            ['date'],
+                            ['time']
+                        ]
+                    }).then(function(result2) {
+                        var hbsObject = {
+                            event: result2,
+                            error_msg: "This event has reached its maximum user"
                         }
-                    }).then(function(data2) {
-                        var current = data2.totalUsers
-                        current = current + 1
-                        db.Event.update({
-                            totalUsers: current
-                        }, {
+                        res.render('index-user', hbsObject);
+                    });
+                } else {
+
+                    if (result[0]) {
+                        db.Event.findAll({
+                            order: [
+                                ['date'],
+                                ['time']
+                            ]
+                        }).then(function(data4) {
+                            var hbsObject = {
+                                event: data4,
+                                error: "You are already signed up for this event"
+                            }
+                            res.render('index-user', hbsObject);
+                        });
+                    } else {
+                        db.Event.findOne({
                             where: {
                                 id: req.params.id
                             }
-                        }).then(function(data3) {
-                            
-                            db.Event.findAll({
-                                order: [
-                                    ['createdAt', 'DESC']
-                                ]
-                            }).then(function(data4) {
-                                var hbsObject = {
-                                    event: data4,
-                                    success_msg: "You are now signed in"
+                        }).then(function(data1) {
+                            if (data1.equizresults === null) {
+                                db.User.findOne({
+                                    where: {
+                                        id: req.user.id
+                                    }
+                                }).then(function(data2) {
+                                    db.Event.update({
+                                        equizresults: data2.uquizresults
+                                    }, {
+                                        where: {
+                                            id: req.params.id
+                                        }
+                                    });
+                                });
+                            } else {
+                                db.User.findOne({
+                                    where: {
+                                        id: req.user.id
+                                    }
+                                }).then(function(data3) {
+                                    averageArray = [];
+                                    for (var i = 0, n = JSON.parse(data3.uquizresults).length; i < n; i++) {
+                                        averageElement = (parseFloat(JSON.parse(data3.uquizresults)[i]) + parseFloat(JSON.parse(data1.equizresults)[i])) / 2.0;
+                                        averageArray.push(JSON.stringify(averageElement));
+                                    }
+                                    db.Event.update({
+                                        equizresults: JSON.stringify(averageArray)
+                                    }, {
+                                        where: {
+                                            id: req.params.id
+                                        }
+                                    }).then(function(data4) {
+                                        console.log('CHECK WORKBENCH FOR CHANGES');
+                                    });
+                                });
+                            }
+                        });
+                        
+                        db.Signup.create({
+                            EventId: req.params.id,
+                            UserId: req.user.id
+                        }).then(function(data1) {
+                            db.Event.findOne({
+                                where: {
+                                    id: req.params.id
                                 }
-                                res.render('index-user', hbsObject);
-                            });
+                            }).then(function(data2) {
+                                var current = data2.totalUsers
+                                current = current + 1
+                                db.Event.update({
+                                    totalUsers: current,
+                                    leftSpot: (data2.attendance_cap - current)
+                                }, {
+                                    where: {
+                                        id: req.params.id
+                                    }
+                                }).then(function(data3) {
+
+                                    db.Event.findAll({
+                                        order: [
+                                            ['date'],
+                                            ['time']
+                                        ]
+                                    }).then(function(data4) {
+                                        var hbsObject = {
+                                            event: data4,
+                                            success_msg: "You are now signed in"
+                                        }
+                                        res.render('index-user', hbsObject);
+                                    });
+                                })
+                            })
                         })
-                    })
-                })
-            }
+                    }
+                }
+            })
+
+
         })
-
-
-
-
-
 
     })
     // // view event for users, to unregister

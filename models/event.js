@@ -41,6 +41,18 @@ module.exports = function(sequelize, Datatypes) {
             validate: {
                 isInt: true
             }
+        }, // end of age
+        leftSpot: {
+            type: Datatypes.INTEGER,
+            validate: {
+                isInt: true
+            }
+        }, // end of age
+        compatibility: {
+            type: Datatypes.INTEGER,
+            validate: {
+                isInt: true
+            }
         },
         picture: {
             type: Datatypes.TEXT,
