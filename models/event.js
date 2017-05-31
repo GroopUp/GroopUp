@@ -91,9 +91,7 @@ module.exports = function(sequelize, Datatypes) {
         classMethods: {
             associate: function(models) {
                 Event.hasMany(models.Signup, {
-                    foreignKey: {
-                        allowNull: false
-                    }
+                    onDelete: "cascade"
                 });
             }
         }

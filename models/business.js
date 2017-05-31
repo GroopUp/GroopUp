@@ -41,6 +41,7 @@ module.exports = function(sequelize, Datatypes) {
         classMethods: {
             associate: function(models) {
                 Business.hasMany(models.Event, {
+                    onDelete: "cascade",
                     foreignKey: {
                         allowNull: false
                     }

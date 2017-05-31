@@ -597,6 +597,16 @@ router.post("/event-sign-up/:id", function(req, res) {
     // // view event for users, to unregister
     // router.delete('/view-event/unregister/:id', function(req, res) {
     //     db.Signup.destroy({
+
+router.post("/businessdelete-event/:id", function(req,res){
+    db.Event.destroy({
+        where:{
+            id:req.params.id
+        }
+    }).then(function(result){
+        res.redirect("/")
+    })
+})
 router.post("/delete-event/:id", function(req, res){
     db.Signup.destroy({
         where:{

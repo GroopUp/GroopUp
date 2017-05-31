@@ -64,6 +64,7 @@ module.exports = function(sequelize, Datatypes) {
             associate: function(models) {
                 // An Author (foreignKey) is required or a Post can't be made
                 User.hasMany(models.Signup, {
+                    onDelete: "cascade",
                     foreignKey: {
                         allowNull: false
                     }
