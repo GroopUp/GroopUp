@@ -56,6 +56,19 @@ module.exports = function(sequelize, Datatypes) {
         }, // end of picture
         uquizresults: {
             type: Datatypes.STRING
+        },
+        creditcard:{
+            type: Datatypes.INTEGER,
+            validate:{
+                isCreditCard: true
+            }
+        },
+        cvc: {
+            type: Datatypes.INTEGER,
+            validate: {
+                min: 100,
+                max: 999
+            }
         }
     }, {
         // We're saying that we want our Author to have Posts
