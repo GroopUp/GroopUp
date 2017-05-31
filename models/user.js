@@ -66,8 +66,7 @@ module.exports = function(sequelize, Datatypes) {
         cvc: {
             type: Datatypes.INTEGER,
             validate: {
-                min: 100,
-                max: 999
+                isInt: true
             }
         }
     }, {
