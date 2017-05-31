@@ -90,23 +90,29 @@ Age: <input type="number" size="6" name="age" min="18" max="99" value="{{this.ag
             </center>
           </td>
         </tr>
+        </div>
+        </form>
       </table>
     </center>
-      </form>
-      </div>
+
+
     </div>
     <div class="col-lg-6 myevents">
     <ul id="eventlist">
 
-      <h3>My events</h3>
+      <center>
+        <h3>My events</h3>
+      </center>
         {{#each this.Signups}}
       <li>
       <ul id="eventinfo">
         <li>
-                  <h3>{{Event.title}}</h3>
+                  <center>
+                    <h4>{{Event.title}}</h4>
+                  </center>
                   </li>
                     <li>
-                      <img height="200px" width="280" src="{{Event.picture}}"/>
+                      <img height="100px" width="180" src="{{Event.picture}}"/>
                     </li>
                     <li>
                       {{Event.location}}

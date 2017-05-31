@@ -3,6 +3,7 @@ body {
   height: 100%;
   font-family: 'Montserrat', sans-serif;
 
+
 }
 
 .container {
@@ -12,12 +13,16 @@ body {
 
 }
 
-
+.jumbotron:hover {
+  background: radial-gradient(circle, #42a1f4, #41f4f1);
+}
 .jumbotron {
   background: linear-gradient(to bottom, #41f4f1 , #42a1f4 );
   /*background-color: rgba(25, 14, 233, 0);*/
   color: rgb(22, 184, 34);
   border-radius: 0;
+  width: 100%;
+
 }
 .mybusiness .myaccount {
  width: 900px;
