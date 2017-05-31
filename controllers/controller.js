@@ -529,7 +529,7 @@ router.post("/event-sign-up/:id", function(req, res) {
                                     }).then(function(data4) {
                                         var hbsObject = {
                                             event: data4,
-                                            success_msg: "You are now signed in"
+                                            success_msg: "You just joined "+data2.title+" event"
                                         }
                                         res.render('index-user', hbsObject);
                                     });
@@ -638,5 +638,9 @@ router.get('/user-account/:id', function(req, res) {
 // router.update('/business-account', function(req, res) {
 //     db.
 // });
+router.get("[otherRoute]", function(req, res) {
+     res.redirect("/");
+ });
+
 
 module.exports = router;

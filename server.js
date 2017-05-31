@@ -61,6 +61,8 @@ require('./passport.js')(passport, db.user);
 //   }
 // }));
 
+//Bullet proof
+
 // Connect Flash
 app.use(flash());
 
