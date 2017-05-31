@@ -54,6 +54,18 @@ module.exports = function(sequelize, Datatypes) {
                 isFloat: true
             }
         },
+        price: {
+            type: Datatypes.INTEGER,
+            validate: {
+                isFloat: true
+            }
+        },
+        originalprice: {
+            type: Datatypes.INTEGER,
+            validate: {
+                isFloat: true
+            }
+        },
         picture: {
             type: Datatypes.TEXT,
             allowNull: false,

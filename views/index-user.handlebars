@@ -70,8 +70,9 @@
                                               <h3>Max limit: {{this.attendance_cap}}</h3>
                                               <h3>Total signed up: {{totalUsers}}</h3>
                                               <h3>Only {{leftSpot}} spot left!</h3>
+                                              <h5 style="text-decoration: line-through">${{originalprice}}</h5><h3 style="color: green">${{price}}</h3>
                                               <form action="/event-sign-up/{{this.id}}" method="POST">
-                                                  <button class="btn btn-info" type="submit">join this event</button>
+                                                  <button class="btn btn-info" type="submit">Join this event</button>
                                               </form>
                                           </div>
                                           <div class="modal-footer">

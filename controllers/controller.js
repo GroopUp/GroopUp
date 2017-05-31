@@ -82,6 +82,8 @@ router.post('/new-event', function(req, res) {
             time: req.body.time,
             picture: req.body.picture,
             attendance_cap: parseInt(req.body.attendance_cap),
+            price: req.body.price,
+            originalprice: (req.body.price*1.7),
             totalUsers: 0,
             BusinessId: req.user.id
         }).then(function(data) {
