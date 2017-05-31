@@ -51,7 +51,7 @@ module.exports = function(sequelize, Datatypes) {
         compatibility: {
             type: Datatypes.INTEGER,
             validate: {
-                isInt: true
+                isFloat: true
             }
         },
         picture: {
