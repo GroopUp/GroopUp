@@ -57,10 +57,10 @@
                     {{date}} {{time}}
                 </li>
                 <li>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{title}}">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{id}}">
                         View Event
                     </button>
-                    <div class="modal fade" id="{{title}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="{{id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -76,6 +76,9 @@
                                     <img height="200px" width="280" src="{{picture}}" />
                                     <h3>Max limit: {{this.attendance_cap}}</h3>
                                     <h3>Total signed up: {{totalUsers}}</h3>
+                                    <form action="/event-sign-up/{{this.id}}" method="POST">
+                                        <button type="submit">join this event</button>
+                                    </form>
                                 </div>
                                 <div class="modal-footer">
                                 </div>
