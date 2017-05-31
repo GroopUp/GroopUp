@@ -4,7 +4,6 @@ $("#quiz").on("click", function() {
     // function validateForm() {
     //     var isValid = true;
     //     $('.chosen-select').each(function() {
-
     //         if ($(this).val() === "")
     //             isValid = false
     //     })
@@ -35,7 +34,7 @@ $("#quiz").on("click", function() {
     // AJAX post the data to the friends API. 
     $.post(currentURL + "/quizdone", {"result":JSON.stringify(scores)}, function(data) {
         // console.log(scores);
-        // window.location="/user"
+        window.location="/user"
     });
     // } else {
     //     alert("Please fill out all fields before submitting!");

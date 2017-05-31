@@ -45,7 +45,6 @@ router.get("/logout", function(req, res) {
 //Protected Routes
 router.get('/my-business', function(req, res) {
     if (req.isAuthenticated()) {
-        console.log("data", req.user)
         if (req.user.phonenumber) {
             db.Business.findOne({
                 where: {
@@ -61,7 +60,6 @@ router.get('/my-business', function(req, res) {
 });
 
 router.get("/new-event", function(req, res) {
-    console.log(req.user);
 
     if (req.isAuthenticated()) {
         if (req.user.age) {
@@ -109,13 +107,11 @@ router.get('/business', function(req, res) {
                 for (var i = 0; i < data.length; i++) {
                     if (moment().isBefore(data[i].date)) {
                         gooddate.push(data[i]);
-                        console.log(gooddate);
                     }
                 }
                 var hbsObject = {
                     event: gooddate
                 }
-                console.log(data);
                 res.render('index-business', hbsObject);
             });
         } else {
@@ -141,7 +137,6 @@ router.get('/user', function(req, res) {
                 for (var i = 0; i < data.length; i++) {
                     if (moment().isBefore(data[i].date)) {
                         gooddate.push(data[i]);
-                        console.log(gooddate);
                     }
                 }
                 var hbsObject = {
@@ -159,7 +154,6 @@ router.get('/user', function(req, res) {
 
 router.get("/my-account", function(req, res) {
     if (req.isAuthenticated()) {
-        console.log("checking", req.user.id)
         if (req.user.age) {
             db.User.findOne({
                 where: {
@@ -204,7 +198,7 @@ router.put("/my-account", function(req, res) {
                 age: req.body.age,
                 picture: req.body.picture
             };
-            console.log("testing", data);
+
             db.User.update(data, { where: { id: userId } }).then(function(result) {
                 res.redirect("/my-account");
             })
@@ -286,7 +280,6 @@ router.put("/my-business", function(req, res) {
                 phonenumber: req.body.phonenumber,
                 picture: req.body.picture
             };
-            console.log("testing", data);
             db.Business.update(data, { where: { id: businessId } }).then(function(result) {
                 res.redirect("/my-business");
             })
@@ -347,7 +340,6 @@ router.get('/', function(req, res) {
             for (var i = 0; i < data.length; i++) {
                 if (moment().isBefore(data[i].date)) {
                     gooddate.push(data[i]);
-                    console.log(gooddate);
                 }
             }
             var hbsObject = {
@@ -396,7 +388,6 @@ router.get('/view-event/:id', function(req, res) {
             id: req.params.id
         }
     }).then(function(data) {
-        console.log(data);
         // var hbsObject = {
         //     event: data
         // }
@@ -413,7 +404,6 @@ router.get("/quiz", function(req, res) {
 })
 
 router.get("/user-view-event/:id", function(req, res) {
-    console.log(req.user)
     db.Event.findOne({
         where: {
             id: req.params.id
@@ -477,8 +467,20 @@ router.post("/event-sign-up/:id", function(req, res) {
                 EventId: req.params.id
             }
         }).then(function(result) {
-            console.log("result", result.dataValues)
-            if (result.dataValues) {
+
+            if (result[0]) {
+                db.Event.findAll({
+                    order: [
+                        ['createdAt', 'DESC']
+                    ]
+                }).then(function(data4) {
+                    var hbsObject = {
+                        event: data4,
+                        error: "You are already signed up for this event"
+                    }
+                    res.render('index-user', hbsObject);
+                });
+            } else {
                 db.Signup.create({
                     EventId: req.params.id,
                     UserId: req.user.id
@@ -497,24 +499,27 @@ router.post("/event-sign-up/:id", function(req, res) {
                                 id: req.params.id
                             }
                         }).then(function(data3) {
-                            res.redirect("/user");
+                            
+                            db.Event.findAll({
+                                order: [
+                                    ['createdAt', 'DESC']
+                                ]
+                            }).then(function(data4) {
+                                var hbsObject = {
+                                    event: data4,
+                                    success_msg: "You are now signed in"
+                                }
+                                res.render('index-user', hbsObject);
+                            });
                         })
                     })
                 })
-            } else {
-                db.Event.findAll({
-                    order: [
-                        ['createdAt', 'DESC']
-                    ]
-                }).then(function(data4) {
-                    var hbsObject = {
-                        event: data4,
-                        error: "You are already signed up for this event"
-                    }
-                    res.render('index-user', hbsObject);
-                });
             }
         })
+
+
+
+
 
 
     })
@@ -534,9 +539,6 @@ router.post("/event-sign-up/:id", function(req, res) {
 
 router.post('/quizdone', function(req, res) {
     console.log("RECEIVED ON BACK-END");
-    console.log(req.body.result);
-    // res.redirect('/')
-    setTimeout(function() { console.log("what") }, 2000);
 
     db.User.update({
         uquizresults: req.body.result
