@@ -95,20 +95,20 @@ Age: <input type="number" size="6" name="age" min="18" max="99" value="0" requir
     <div class="col-lg-6 my-events">
     <ul id="eventlist">
       <h3>My events</h3>
-        {{#each event}}
+        {{#each this.Signups}}
       <li>
       <ul id="eventinfo">
         <li>
-                  {{title}}
+                  {{Event.title}}
                   </li>
                     <li>
-                      <img height="200px" width="280" src="{{picture}}"/>
+                      <img height="200px" width="280" src="{{Event.picture}}"/>
                     </li>
                     <li>
-                      {{location}}
+                      {{Event.location}}
                     </li>
                     <li>
-                      {{date}}
+                      {{Event.date}}  {{Event.time}}
                     </li>
                     <li>
                       <form action="/{{this.id}}?_method=GET" method="GET">

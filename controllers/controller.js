@@ -164,8 +164,20 @@ router.get("/my-account", function(req, res) {
             db.User.findOne({
                 where: {
                     id: req.user.id
-                }
+                },
+                include: [
+                {
+                    model: db.Signup,
+
+                    include: [
+                    {
+                    model: db.Event
+                    },
+                 ]
+                    }
+            ]
             }).then(function(data) {
+                console.log("================", data.dataValues.Signups[0].Event);
                 res.render("my-account", data.dataValues);
             })
         }
