@@ -83,7 +83,6 @@ router.post('/new-event', function(req, res) {
             picture: req.body.picture,
             attendance_cap: parseInt(req.body.attendance_cap),
             totalUsers: 0,
-            leftSpot:0,
             BusinessId: req.user.id
         }).then(function(data) {
             res.redirect("/business");
