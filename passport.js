@@ -8,7 +8,7 @@ module.exports = function(passport, user) {
     //Serialize Sessions
     //This will create cookies and stored them in the session
     passport.serializeUser(function(user, done) {
-        console.log("SERIALZING!!!!!",user)
+        console.log("SERIALZING!!!!!")
         //saving user's unique colume to verify the type of table when desealize
         var key = {
             id: user.id,
@@ -110,7 +110,6 @@ module.exports = function(passport, user) {
                 if (!isValidPassword(user.password, password)) {
                     req.flash("error_msg", "Incorrect password.");
                     return done(null, false, { message: 'Incorrect password.' });
-
                 }
 
                 req.flash("success_msg", "You are now logged in")
@@ -123,8 +122,6 @@ module.exports = function(passport, user) {
                 console.log("Error:", err);
                 req.flash("error", "Something went wrong with your Signin.");
                 return done(null, false, { message: 'Something went wrong with your Signin' });
-
-
             });
 
         }
@@ -143,7 +140,7 @@ module.exports = function(passport, user) {
             db.Business.findOne({ where: { email: email } }).then(function(business) {
 
                 if (business) {
-                    console.log(db.Business)
+                    
                     req.flash("error", "That email is already taken.");
                     return done(null, false, { message: 'That email is already taken' });
                 } else {
