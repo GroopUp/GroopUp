@@ -34,8 +34,8 @@ $("#quiz").on("click", function() {
 
     // AJAX post the data to the friends API. 
     $.post(currentURL + "/quizdone", {"result":JSON.stringify(scores)}, function(data) {
-        console.log(scores);
-        window.location="/user"
+        // console.log(scores);
+        // window.location="/user"
     });
     // } else {
     //     alert("Please fill out all fields before submitting!");

@@ -461,28 +461,45 @@ router.post("/event-sign-up/:id", function(req, res) {
             }
         });
 
-        db.Signup.create({
-            EventId: req.params.id,
-            UserId: req.user.id
-        }).then(function(data1) {
-            db.Event.findOne({
-                where: {
-                    id: req.params.id
-                }
-            }).then(function(data2) {
-                var current = data2.totalUsers
-                current = current + 1
-                db.Event.update({
-                    totalUsers: current
-                }, {
-                    where: {
-                        id: req.params.id
-                    }
-                }).then(function(data3) {
-                    res.redirect("/user");
+
+
+        db.Signup.findAll({
+            where: {
+                UserId: req.user.id,
+                EventId: req.params.id
+            }
+        }).then(function(result) {
+            console.log("result", result.dataValues)
+            if (result.dataValues) {
+                db.Signup.create({
+                    EventId: req.params.id,
+                    UserId: req.user.id
+                }).then(function(data1) {
+                    db.Event.findOne({
+                        where: {
+                            id: req.params.id
+                        }
+                    }).then(function(data2) {
+                        var current = data2.totalUsers
+                        current = current + 1
+                        db.Event.update({
+                            totalUsers: current
+                        }, {
+                            where: {
+                                id: req.params.id
+                            }
+                        }).then(function(data3) {
+                            res.redirect("/user");
+                        })
+                    })
                 })
-            })
+            } else {
+                req.flash("error", "Something went wrong with your Signin");
+                res.redirect("/")
+            }
         })
+
+
     })
     // // view event for users, to unregister
     // router.delete('/view-event/unregister/:id', function(req, res) {
@@ -510,12 +527,9 @@ router.post('/quizdone', function(req, res) {
         where: {
             id: req.user.id
         }
-    }).then(function(data){
+    }).then(function(data) {
         res.redirect('/user');
     })
-
-
-
 });
 
 

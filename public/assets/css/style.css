@@ -169,3 +169,7 @@ opacity: .8;
 /*.continue {
   padding-left: 80px;
 }*/
+
+.alert {
+  margin-bottom: 0 !important;
+}

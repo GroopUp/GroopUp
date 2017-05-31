@@ -198,7 +198,6 @@ module.exports = function(passport, user) {
                 if (!isValidPassword(business.password, password)) {
                     req.flash("error", "Incorrect Password.");
                     return done(null, false, { message: 'Incorrect password.' });
-
                 }
                 req.flash("success_msg", "You are now log in with your business account.")
                 var businessinfo = business.get();
