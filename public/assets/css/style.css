@@ -12,13 +12,14 @@ body {
 
 }
 
+
 .jumbotron {
   background: linear-gradient(to bottom, #41f4f1 , #42a1f4 );
   /*background-color: rgba(25, 14, 233, 0);*/
   color: rgb(22, 184, 34);
   border-radius: 0;
 }
-.mybusiness {
+.mybusiness .myaccount {
  width: 900px;
   height: 500px;
   margin: auto;
@@ -83,9 +84,11 @@ button {
 }
 
 .quiz {
-  height: 900px;
+  height: 700px;
+  width: 500px;
+  margin: auto;
 }
-.update-biz {
+.update-biz, .update-info {
   width: 250px;
 }
 .new-account, .new-biz-info {
@@ -162,6 +165,11 @@ opacity: .8;
 .home {
   width: 100%;
   margin: auto;
+}
+.view-event {
+  width:700px;
+  margin: auto;
+  padding-bottom: 30px;
 }
 /*.continue {
   padding-left: 80px;
