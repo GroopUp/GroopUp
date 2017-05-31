@@ -3,7 +3,7 @@
     "username": "root",
 
     "password": "alison",
-    "database": "groop2",
+    "database": "groopuptesting2",
 
     "host": "127.0.0.1",
     "dialect": "mysql"
