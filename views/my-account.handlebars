@@ -22,9 +22,11 @@
   <h3><center>my account</center></h3>
 </div>
 <div class="container">
-  <div class="row">
+  <div class="row myaccount">
     <div class="col-lg-6 update-info">
-      <h3>My Info</h3>
+      <center>
+<h3>My Info</h3></center>
+      <center>
       <table class="update-account">
         <form class="create-update-form" action="/my-account?_method=PUT" method="POST">
           <div class="form-group">
@@ -54,7 +56,7 @@
         </tr>
         <tr>
           <td>
-            photo: <img height="100px" src={{this.picture}}/>
+            photo: <br><img height="100px" src={{this.picture}}/>
           </td>
           <td>
               <input type="url" id="email" name="picture" value="{{this.picture}}" required>
@@ -66,11 +68,11 @@
           </td>
           <td>
             {{#if this.sex}}
-            <input type="radio" name="sex" value="0" checked> male<br>
-            <input type="radio" name="sex" value="1"> female<br>
-            {{else}}
             <input type="radio" name="sex" value="0"> male<br>
-            <input type="radio" name="sex" value="1" checked  > female<br>
+            <input type="radio" name="sex" value="1" checked> female<br>
+            {{else}}
+            <input type="radio" name="sex" value="0" checked> male<br>
+            <input type="radio" name="sex" value="1"   > female<br>
             {{/if}}
           </td>
         </tr>
@@ -79,7 +81,7 @@
             age:
           </td>
           <td>
-Age: <input type="number" size="6" name="age" min="18" max="99" value="0" required>          </td>
+Age: <input type="number" size="6" name="age" min="18" max="99" value="{{this.age}}" required>          </td>
         </tr>
         <tr>
           <td colspan="2">
@@ -88,27 +90,29 @@ Age: <input type="number" size="6" name="age" min="18" max="99" value="0" requir
             </center>
           </td>
         </tr>
-      </form>
       </table>
+    </center>
+      </form>
       </div>
     </div>
-    <div class="col-lg-6 my-events">
+    <div class="col-lg-6 myevents">
     <ul id="eventlist">
+
       <h3>My events</h3>
-        {{#each event}}
+        {{#each this.Signups}}
       <li>
       <ul id="eventinfo">
         <li>
-                  {{title}}
+                  {{Event.title}}
                   </li>
                     <li>
-                      <img height="200px" width="280" src="{{picture}}"/>
+                      <img height="200px" width="280" src="{{Event.picture}}"/>
                     </li>
                     <li>
-                      {{location}}
+                      {{Event.location}}
                     </li>
                     <li>
-                      {{date}}
+                      {{Event.date}}  {{Event.time}}
                     </li>
                     <li>
                       <form action="/{{this.id}}?_method=GET" method="GET">
@@ -123,5 +127,3 @@ Age: <input type="number" size="6" name="age" min="18" max="99" value="0" requir
   </div>
 </div>
 </div>
-
-
