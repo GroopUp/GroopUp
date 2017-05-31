@@ -122,10 +122,58 @@ router.get('/business', function(req, res) {
     }
 });
 
+function update(userScores, event, length, count) {
+    console.log(event.length);
+    if (event.length !== null) {
+        if (count < length) {
+            var eventScores = JSON.parse(event[count].equizresults);
+            if (eventScores !== null) {
+                var sum = 0;
+                for (var i = 0, n = eventScores.length; i < n; i++) {
+                    sum += Math.abs(JSON.parse(userScores[i]) - JSON.parse(eventScores[i]));
+                } // end for loop
+                sum = ((40-sum)/40)*100;
+                db.Event.update({
+                    compatibility: sum
+                }, {
+                    where: {
+                        id: event[count].id
+                    }
+                }).then(function(data3) {
+                    count++;
+                    update(userScores, event, length, count);
+                });
+            } else {
+                console.log('something1');
+            }
+        } else {
+            console.log('something2');
+        }
+    } else {
+        console.log('something3');
+    }
+}
+
 router.get('/user', function(req, res) {
     if (req.isAuthenticated()) {
         //this will make sure business account can't get into the /user route
         if (req.user.age) {
+
+            db.User.findOne({
+                where: {
+                    id: req.user.id
+                }
+            }).then(function(data1) {
+                var userScores = JSON.parse(data1.uquizresults);
+                db.Event.findAll({
+                }).then(function(data2) {
+                    var event = data2;
+                    var count = 0;
+                    var length = event.length;
+                    update(userScores, event, length, count);
+                });
+            });
+
             db.Event.findAll({
                 order: [
                     ['date'],
