@@ -173,7 +173,7 @@ router.get("/my-account", function(req, res) {
                     }, ]
                 }]
             }).then(function(data) {
-                console.log("================", data.dataValues.Signups[0].Event);
+                // console.log("================", data.dataValues.Signups[0].Event);
                 res.render("my-account", data.dataValues);
             })
         }
