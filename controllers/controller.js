@@ -83,6 +83,7 @@ router.post('/new-event', function(req, res) {
             picture: req.body.picture,
             attendance_cap: parseInt(req.body.attendance_cap),
             totalUsers: 0,
+            leftSpot:0,
             BusinessId: req.user.id
         }).then(function(data) {
             res.redirect("/business");
@@ -500,7 +501,7 @@ router.post("/event-sign-up/:id", function(req, res) {
                                 });
                             }
                         });
-                        
+
                         db.Signup.create({
                             EventId: req.params.id,
                             UserId: req.user.id
@@ -547,6 +548,49 @@ router.post("/event-sign-up/:id", function(req, res) {
     // // view event for users, to unregister
     // router.delete('/view-event/unregister/:id', function(req, res) {
     //     db.Signup.destroy({
+router.post("/delete-event/:id", function(req, res){
+    db.Signup.destroy({
+        where:{
+            EventId: req.params.id,
+            UserId: req.user.id
+        }
+    });
+    db.Event.findOne({
+        where:{
+            id: req.params.id
+        }
+    }).then(function(result){
+        db.Event.update({
+            totalUsers: (result.totalUsers - 1),
+            leftSpot: (result.leftSpot + 1)
+        }, {
+            where:{
+                id: req.params.id
+            }
+        }).then(function(result2){
+            db.User.findOne({
+                where: {
+                    id: req.user.id
+                },
+                include: [{
+                    model: db.Signup,
+
+                    include: [{
+                        model: db.Event
+                    }, ]
+                }]
+            }).then(function(data) {
+                // console.log("================", data.dataValues.Signups[0].Event);
+                data.dataValues.error = "You just cancel the event";
+                res.render("my-account", data.dataValues);
+            })
+        })
+    })
+
+
+})
+
+
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // router.get('/user-login', function(req, res) {

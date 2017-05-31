@@ -1,157 +1,166 @@
 <div class="jumbotron">
-  <div class="biz-tabs">
-    <ul id ="tabs-user">
-      <li>
-    <form class="create-update-form" action="/my-account" method="GET">
-<button type="submit" class="btn btn-primary user-settings">my account</button>
-</form>
-</li>
-    <li>
-    <form class="create-update-form" action="/user" method="GET">
-<button type="submit" class="btn btn-primary user-settings">home</button>
-</form>
-</li>
-    <li>
-    <form class="create-update-form" action="/logout" method="GET">
-      <button type="submit" class="btn btn-primary logout">log out</button>
-</form>
-</li>
-</ul>
-</div>
-  <form class= "home" action="/user" method="GET"><center><button><h1>GroopUp</h1></button></center></form>
-  <h3><center>my account</center></h3>
+    <div class="biz-tabs">
+        <ul id="tabs-user">
+            <li>
+                <form class="create-update-form" action="/my-account" method="GET">
+                    <button type="submit" class="btn btn-primary user-settings">my account</button>
+                </form>
+            </li>
+            <li>
+                <form class="create-update-form" action="/user" method="GET">
+                    <button type="submit" class="btn btn-primary user-settings">home</button>
+                </form>
+            </li>
+            <li>
+                <form class="create-update-form" action="/logout" method="GET">
+                    <button type="submit" class="btn btn-primary logout">log out</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <form class="home" action="/user" method="GET">
+        <center>
+            <button>
+                <h1>GroopUp</h1></button>
+        </center>
+    </form>
+    <h3><center>my account</center></h3>
 </div>
 <div class="container">
-  <div class="row myaccount">
-    <div class="col-lg-6 update-info">
-      <center>
-<h3>My Info</h3></center>
-      <center>
-      <table class="update-account">
-        <form class="create-update-form" action="/my-account?_method=PUT" method="POST">
-          <div class="form-group">
-        <tr>
-          <td>
-            name:
-          </td>
-          <td>
-              <input type="text" id="auth" name="name" value="{{this.name}}" required>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            email:
-          </td>
-          <td>
-                <input type="email" id="email" name="email" value="{{this.email}}" required>
-          </td>
-        </tr>
-        <tr>
-          <td>
-          password:
-          </td>
-          <td>
-              <input type="password" id="password" name="password" value="{{this.password}}">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            photo: <br><img height="100px" src={{this.picture}}/>
-          </td>
-          <td>
-              <input type="url" id="email" name="picture" value="{{this.picture}}" required>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            sex:
-          </td>
-          <td>
-            {{#if this.sex}}
-            <input type="radio" name="sex" value="0"> male<br>
-            <input type="radio" name="sex" value="1" checked> female<br>
-            {{else}}
-            <input type="radio" name="sex" value="0" checked> male<br>
-            <input type="radio" name="sex" value="1"   > female<br>
-            {{/if}}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            age:
-          </td>
-          <td>
-Age: <input type="number" size="6" name="age" min="18" max="99" value="{{this.age}}" required>          </td>
-        </tr>
-        <tr>
-          <td colspan="2">
+    <div class="row myaccount">
+        <div class="col-lg-6 update-info">
             <center>
-              <button type="submit" class="btn btn-primary" id="submit">update account</button>
+                <h3>My Info</h3></center>
+            <center>
+                <table class="update-account">
+                    <form class="create-update-form" action="/my-account?_method=PUT" method="POST">
+                        <div class="form-group">
+                            <tr>
+                                <td>
+                                    name:
+                                </td>
+                                <td>
+                                    <input type="text" id="auth" name="name" value="{{this.name}}" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    email:
+                                </td>
+                                <td>
+                                    <input type="email" id="email" name="email" value="{{this.email}}" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    password:
+                                </td>
+                                <td>
+                                    <input type="password" id="password" name="password" value="{{this.password}}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    photo:
+                                    <br><img height="100px" src="{{this.picture}}" />
+                                </td>
+                                <td>
+                                    <input type="url" id="email" name="picture" value="{{this.picture}}" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    sex:
+                                </td>
+                                <td>
+                                    {{#if this.sex}}
+                                    <input type="radio" name="sex" value="0"> male
+                                    <br>
+                                    <input type="radio" name="sex" value="1" checked> female
+                                    <br> {{else}}
+                                    <input type="radio" name="sex" value="0" checked> male
+                                    <br>
+                                    <input type="radio" name="sex" value="1"> female
+                                    <br> {{/if}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    age:
+                                </td>
+                                <td>
+                                    Age:
+                                    <input type="number" size="6" name="age" min="18" max="99" value="{{this.age}}" required> </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <center>
+                                        <button type="submit" class="btn btn-primary" id="submit">update account</button>
+                                    </center>
+                                </td>
+                            </tr>
+                        </div>
+                    </form>
+                </table>
             </center>
-          </td>
-        </tr>
         </div>
-        </form>
-      </table>
-    </center>
-
-
-    </div>
-    <div class="col-lg-6 myevents">
-    <ul id="eventlist">
-
-      <center>
-        <h3>My events</h3>
-      </center>
-        {{#each this.Signups}}
-      <li>
-      <ul id="eventinfo">
-        <li>
-                  <center>
-                    <h4>{{Event.title}}</h4>
-                  </center>
-                  </li>
-                    <li>
-                      <img height="100px" width="180" src="{{Event.picture}}"/>
-                    </li>
-                    <li>
-                      {{Event.location}}
-                    </li>
-                    <li>
-                      {{Event.date}}  {{Event.time}}
-                    </li>
-                    <li>
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{Event.id}}">
-                        View Event
-                        </button>
-                        <div class="modal fade" id="{{Event.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title" id="exampleModalLabel" style="margin: auto">{{this.Event.title}}</h1>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <h3>Location: {{this.Event.location}}</h3>
-                                        <h3>Date: {{this.Event.date}}</h3>
-                                        <h3>Time: {{this.Event.time}}</h3>
-                                        <img height="200px" width="280" src="{{Event.picture}}" />
-                                        <h3>Max limit: {{this.Event.attendance_cap}}</h3>
-                                        <h3>Total signed up: {{Event.totalUsers}}</h3>
-                                    </div>
-                                    <div class="modal-footer">
+        <div class="col-lg-6 myevents">
+            <ul id="eventlist">
+                <center>
+                    <h3>My events</h3>
+                </center>
+                {{#each this.Signups}}
+                <li>
+                    <ul id="eventinfo">
+                        <li>
+                            <center>
+                                <h4>{{Event.title}}</h4>
+                            </center>
+                        </li>
+                        <li>
+                            <img height="100px" width="180" src="{{Event.picture}}" />
+                        </li>
+                        <li>
+                            {{Event.location}}
+                        </li>
+                        <li>
+                            {{Event.date}} {{Event.time}}
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{Event.id}}">
+                                View Event
+                            </button>
+                            <div class="modal fade" id="{{Event.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title" id="exampleModalLabel" style="margin: auto">{{this.Event.title}}</h1>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h3>Location: {{this.Event.location}}</h3>
+                                            <h3>Date: {{this.Event.date}}</h3>
+                                            <h3>Time: {{this.Event.time}}</h3>
+                                            <img height="200px" width="280" src="{{Event.picture}}" />
+                                            <h3>Max limit: {{this.Event.attendance_cap}}</h3>
+                                            <h3>Total signed up: {{Event.totalUsers}}</h3>
+                                            <form action="/delete-event/{{this.Event.id}}" method="POST">
+                                              <button type="submit" class="btn btn-primary" id="submit">Cancel Event</button>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                  </ul>
-                </center>
-              </li>
-        {{/each}}
-    </ul>
-  </div>
-</div>
+                        </li>
+                    </ul>
+                    </center>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
 </div>
