@@ -423,7 +423,7 @@ router.post("/event-sign-up/:id", function(req, res) {
                 id: req.params.id
             }
         }).then(function(data1) {
-            if (data1.equizresults.length === 0) {
+            if (data1.equizresults === null) {
                 db.User.findOne({
                     where: {
                         id: req.user.id
@@ -433,7 +433,7 @@ router.post("/event-sign-up/:id", function(req, res) {
                         equizresults: data2.uquizresults
                     }, {
                         where: {
-                            id: data1.id
+                            id: req.params.id
                         }
                     });
                 });
@@ -446,16 +446,16 @@ router.post("/event-sign-up/:id", function(req, res) {
                     averageArray = [];
                     for (var i = 0, n = JSON.parse(data3.uquizresults).length; i < n; i++) {
                         averageElement = (parseFloat(JSON.parse(data3.uquizresults)[i]) + parseFloat(JSON.parse(data1.equizresults)[i])) / 2.0;
-                        averageArray.push(averageElement);
+                        averageArray.push(JSON.stringify(averageElement));
                     }
                     db.Event.update({
                         equizresults: JSON.stringify(averageArray)
                     }, {
                         where: {
-                            id: data1.id
+                            id: req.params.id
                         }
                     }).then(function(data4) {
-
+                        console.log('CHECK WORKBENCH FOR CHANGES');
                     });
                 });
             }
