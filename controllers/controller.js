@@ -165,17 +165,13 @@ router.get("/my-account", function(req, res) {
                 where: {
                     id: req.user.id
                 },
-                include: [
-                {
+                include: [{
                     model: db.Signup,
 
-                    include: [
-                    {
-                    model: db.Event
-                    },
-                 ]
-                    }
-            ]
+                    include: [{
+                        model: db.Event
+                    }, ]
+                }]
             }).then(function(data) {
                 console.log("================", data.dataValues.Signups[0].Event);
                 res.render("my-account", data.dataValues);
@@ -506,8 +502,17 @@ router.post("/event-sign-up/:id", function(req, res) {
                     })
                 })
             } else {
-                req.flash("error", "Something went wrong with your Signin");
-                res.redirect("/")
+                db.Event.findAll({
+                    order: [
+                        ['createdAt', 'DESC']
+                    ]
+                }).then(function(data4) {
+                    var hbsObject = {
+                        event: data4,
+                        error: "You are already signed up for this event"
+                    }
+                    res.render('index-user', hbsObject);
+                });
             }
         })
 
